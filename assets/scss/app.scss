@@ -1,0 +1,40 @@
+@import 'queries';
+@import 'variables';
+@import 'fonts';
+// @import 'iconfont';
+@import 'mixins';
+@import 'utils';
+@import 'root';
+@import 'forms';
+@import 'components/components';
+
+// :)
+* {
+  box-sizing: border-box;
+}
+
+// Text Selection Colour
+::selection {
+  background: $selection; /* WebKit/Blink Browsers */
+}
+::-moz-selection {
+  background: $selection; /* Gecko Browsers */
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+}
+
+body {
+  overflow-x: hidden;
+
+  color: $text-dark;
+  background-color: $background-colour;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

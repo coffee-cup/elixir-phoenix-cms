@@ -1,0 +1,80 @@
+// These are the styles for the rendered markdown
+
+$quote-border: #dfe2e5;
+$quote-colour: #9c9c9c;
+$table-row-colour: rgba($green, .15);
+
+.markdown {
+  font-family: $serif;
+
+  > :first-child {
+    margin-top: 0;
+  }
+
+  > :last-child {
+    margin-bottom: 0;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: $sans;
+  }
+
+  h3 {
+    margin-bottom: .5rem;
+  }
+
+  p {
+    word-wrap: break-word;
+  }
+
+  ul {
+    margin: .8rem 0;
+  }
+
+  li > p {
+    margin: .5rem 0;
+  }
+
+  blockquote {
+    margin: 0;
+    padding-left: 1rem;
+    color: $quote-colour;
+    border-left: solid .25rem $quote-border;
+  }
+
+  hr {
+    height: .25rem;
+    margin: 1rem 0;
+    background-color: $quote-border;
+    border: none;
+  }
+
+  pre {
+    a {
+      text-shadow: none;
+    }
+  }
+
+  table {
+    padding: .5rem 0;
+
+    th,
+    td {
+      padding: .5rem;
+    }
+
+    th {
+      padding-bottom: 0;
+    }
+
+    tbody tr:nth-child(odd) {
+      background-color: $table-row-colour;
+    }
+  }
+}
+
+.prism-previewer {
+  z-index: 1;
+}

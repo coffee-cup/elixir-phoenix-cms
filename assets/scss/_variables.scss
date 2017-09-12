@@ -1,0 +1,43 @@
+$lightgray: rgb(220, 220, 220);
+$darkgray: #333333;
+$white: #ffffff;
+
+$darkblue: #3b28cc;
+$lightblue: #3fafff;
+$red: #e7040f;
+$beige: #fdf6e3;
+$purple: #5e2bff;
+$green: #19d626;
+
+$primary-colour: $purple;
+$secondary-colour: $green;
+$accent-colour: $red;
+$background-colour: white;
+$light-green: rgba($green, .6);
+$sidebar-colour: rgba($green, .15);
+$border-colour: rgba($green, .4);
+
+$text-dark: $darkgray;
+$text-light: $white;
+
+$selection: #aba7e8;
+$notes-hover: #e6e6e6;
+
+$base-font-size: 16px;
+$base-line-height: 1.6;
+
+$success-colour: #83cc61;
+$error-colour: $red;
+
+$bradius: .2rem;
+
+$side-padding-small: 1.5rem;
+
+$s-animation: 0.250s ease-in-out;
+
+$gutter: 1rem;
+
+:root {
+  --gutter: $gutter;
+  --m-width: 46rem;
+}

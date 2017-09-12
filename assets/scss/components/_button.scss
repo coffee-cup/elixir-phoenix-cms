@@ -1,0 +1,58 @@
+.button {
+  display: inline-block;
+
+  padding: .5rem;
+
+  color: $text-light;
+  background-color: $primary-colour;
+  text-shadow: none;
+
+  font-size: .9rem;
+  font-weight: bold;
+
+  border: none;
+  border-radius: $bradius;
+  outline: none;
+
+  cursor: pointer;
+  transition: transform .250s ease-out;
+
+  &:hover {
+    transform: scale(1.02);
+    opacity: 1;
+  }
+
+  &:active {
+    transform: scale(1.01);
+  }
+
+  &--noRadius {
+    border-radius: 0;
+  }
+
+  &--large {
+    width: 100%;
+    padding: .7rem 1rem;
+    text-align: center;
+  }
+
+  &--green {
+    background-color: $secondary-colour;
+    color: $text-dark;
+  }
+
+  &--greenLight {
+    background-color: $sidebar-colour;
+    transition: background-color .250s ease-out;
+
+    &:hover {
+      transform: scale(1);
+      background-color: rgba($sidebar-colour, .5);
+    }
+
+    &:active {
+      transform: scale(1);
+      background-color: lighten($sidebar-colour, 20%);
+    }
+  }
+}
