@@ -2,30 +2,33 @@
   font-family: 'Trueno';
   font-weight: normal;
   font-style: normal;
-
-  src: local('Trueno Regular'), local('TruenoRg'),
-    url('../fonts/TruenoRg.woff2') format('woff2'),
-    url('../fonts/TruenoRg.woff') format('woff');
+  src: local('Trueno Regular'), local('TruenoRg'), url('../fonts/TruenoRg.woff2') format('woff2'), url('../fonts/TruenoRg.woff') format('woff');
 }
 
 @font-face {
   font-family: 'Trueno';
   font-weight: bold;
   font-style: normal;
-
-  src: local('Trueno Bold'), local('TruenoBd'),
-    url('../fonts/TruenoBd.woff2') format('woff2'),
-    url('../fonts/TruenoBd.woff') format('woff');
+  src: local('Trueno Bold'), local('TruenoBd'), url('../fonts/TruenoBd.woff2') format('woff2'), url('../fonts/TruenoBd.woff') format('woff');
 }
 
-$sans: 'Trueno', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-  Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-  'Segoe UI Symbol';
-$serif: 'Merriweather', serif;
-$mono: 'Courier New', monospace;
-
+$sans: 'Trueno',
+-apple-system,
+BlinkMacSystemFont,
+'Segoe UI',
+Roboto,
+Helvetica,
+Arial,
+sans-serif,
+'Apple Color Emoji',
+'Segoe UI Emoji',
+'Segoe UI Symbol';
+$serif: 'Merriweather',
+serif;
+$mono: 'Courier New',
+monospace;
 body {
-  font-family: $sans;
+  font-family: $serif;
 }
 
 h1,

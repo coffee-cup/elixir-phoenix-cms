@@ -1,7 +1,5 @@
 @import 'variables';
-
 // TYPOGRAPHY
-
 .mono {
   font-family: $mono;
 }
@@ -73,33 +71,28 @@
 
 .su {
   text-decoration: none;
-
   @include smart-underline($background-colour, $text-dark, $selection);
 }
 
 .su-colour {
   text-decoration: none;
-
   @include smart-underline($background-colour, $primary-colour, $selection);
 }
 
 .st {
   text-decoration: line-through;
   color: $primary-colour;
-
-  > * {
+  >* {
     color: $text-dark;
   }
 }
 
 .disabled {
   cursor: text;
-
-  opacity: .5;
+  opacity: 0.5;
 }
 
 // WHITE SPACE
-
 .preserve-whitespace {
   white-space: pre;
 }
@@ -119,7 +112,6 @@
 
 .img-center {
   display: block;
-
   margin: auto;
 }
 
@@ -128,7 +120,7 @@
   max-width: 100%;
 }
 
-.cont {
+.container {
   max-width: var(--m-width);
   margin-left: auto;
   margin-right: auto;
@@ -154,14 +146,12 @@
 
 .bcenter {
   display: block;
-
   margin-right: auto;
   margin-left: auto;
 }
 
 .icon {
   margin-top: -10px;
-
   color: $text-dark;
 }
 
@@ -178,7 +168,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
   &-not-small {
     @include min-screen($xsmall) {
       display: block;
@@ -195,13 +184,11 @@
 }
 
 // Cursor
-
 .pointer {
   cursor: pointer;
 }
 
 // Background
-
 .bg-primary {
   background-color: $primary-colour;
 }
@@ -223,7 +210,6 @@
 }
 
 // Layout
-
 .flex {
   display: flex;
 }
@@ -245,6 +231,10 @@
   justify-content: center;
 }
 
+.afe {
+  align-items: flex-end;
+}
+
 .col {
   flex-direction: column;
 }
@@ -258,8 +248,8 @@
 }
 
 // Misc
-
 @mixin text-underline-color($color) {
-  -moz-text-decoration-color: $color; /* Code for Firefox */
+  -moz-text-decoration-color: $color;
+  /* Code for Firefox */
   text-decoration-color: $color;
 }

@@ -8,7 +8,6 @@ a {
   text-decoration: none;
   cursor: pointer;
   transition: .250s ease-in-out;
-
   @include smart-underline($background-colour, $text-dark, $selection);
   &:hover {
     opacity: .5;
@@ -24,6 +23,7 @@ a.none {
 ul.none {
   padding-left: 0;
   list-style-type: none;
+  line-height: 2;
 }
 
 .page {

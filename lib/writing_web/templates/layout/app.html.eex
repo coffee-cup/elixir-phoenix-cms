@@ -9,17 +9,13 @@
 
     <title>Hello Writing!</title>
     <link rel="stylesheet" href="<%= static_path(@conn, "/app.css") %>">
+    <link href="https://fonts.googleapis.com/css?family=Merriweather:400,400i,700" rel="stylesheet">
   </head>
 
   <body>
-    <div class="container">
+    <div class="container measure m-a ph0-l ph4-m ph2">
       <header class="header">
-        <nav role="navigation">
-          <ul class="nav nav-pills pull-right">
-            <li><a href="http://www.phoenixframework.org/docs">Get Started</a></li>
-          </ul>
-        </nav>
-        <span class="logo"></span>
+        <h1 class="f-headline-ns f1">w.</h1>
       </header>
 
       <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
