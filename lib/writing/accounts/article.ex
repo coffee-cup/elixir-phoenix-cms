@@ -17,6 +17,6 @@ defmodule Writing.Accounts.Article do
   def changeset(%Article{} = article, attrs) do
     article
     |> cast(attrs, [:title, :body, :draft, :image])
-    |> validate_required([:title, :body, :draft, :image])
+    |> validate_required([:title, :body, :draft])
   end
 end

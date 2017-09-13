@@ -6,8 +6,8 @@ defmodule Writing.AccountsTest do
   describe "articles" do
     alias Writing.Accounts.Article
 
-    @valid_attrs %{body: "some body", title: "some title"}
-    @update_attrs %{body: "some updated body", title: "some updated title"}
+    @valid_attrs %{body: "some body", title: "some title", image: "http://example.com/image.jpg"}
+    @update_attrs %{body: "some updated body", title: "some updated title", image: "http://example.com/image-updated.jpg"}
     @invalid_attrs %{body: nil, title: nil}
 
     def article_fixture(attrs \\ %{}) do
