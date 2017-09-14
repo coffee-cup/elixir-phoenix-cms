@@ -1,3 +1,5 @@
+<%= render WritingWeb.SharedView, "header.html", assigns %>
+
 <div class="section articles">
   <h1 class="f2">Articles</h1>
 

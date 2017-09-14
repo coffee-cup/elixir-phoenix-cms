@@ -8,6 +8,7 @@ defmodule Writing.Accounts.Article do
     field :body, :string
     field :draft, :boolean, default: false
     field :image, :string
+    field :slug, :string
     field :title, :string
 
     timestamps()
@@ -16,7 +17,7 @@ defmodule Writing.Accounts.Article do
   @doc false
   def changeset(%Article{} = article, attrs) do
     article
-    |> cast(attrs, [:title, :body, :draft, :image])
-    |> validate_required([:title, :body, :draft])
+    |> cast(attrs, [:slug, :title, :body, :draft, :image])
+    |> validate_required([:slug, :title, :body, :draft])
   end
 end

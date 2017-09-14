@@ -3,6 +3,7 @@ defmodule Writing.Repo.Migrations.CreateArticles do
 
   def change do
     create table(:articles) do
+      add :slug, :string
       add :title, :string
       add :body, :text
       add :draft, :boolean, default: false, null: false

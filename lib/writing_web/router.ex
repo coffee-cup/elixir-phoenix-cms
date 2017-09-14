@@ -9,15 +9,35 @@ defmodule WritingWeb.Router do
     plug :put_secure_browser_headers
   end
 
+  pipeline :auth do
+  end
+
   pipeline :api do
     plug :accepts, ["json"]
+  end
+
+  scope "/admin", WritingWeb do
+    pipe_through :browser
+    pipe_through :auth
+
+    get "/", AdminController, :index
+    resources "/articles", ArticleController, only: [:index, :create, :edit, :update, :delete]
+  end
+
+  scope "/auth", WritingWeb do
+    pipe_through [:browser]
+
+    get "/:provider", AuthController, :request
+    get "/:provider/callback", AuthController, :callback
+    post "/:provider/callback", AuthController, :callback
   end
 
   scope "/", WritingWeb do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
-    resources "/articles", ArticleController
+    get "/login", AdminController, :login
+    get "/:slug", ArticleControler, :show
   end
 
   # Other scopes may use custom stacks.
