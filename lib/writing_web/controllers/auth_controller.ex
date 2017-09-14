@@ -7,16 +7,10 @@ defmodule WritingWeb.AuthController do
   alias Writing.Accounts
   alias Writing.Accounts.AuthUser
   alias Writing.Accounts.User
+  alias WritingWeb.ErrorView
 
   def request(conn, _params) do
     configure_session(conn, drop: true)
-  end
-
-  def delete(conn, _params) do
-    conn
-    |> put_flash(:info, "You have been logged out!")
-    |> configure_session(drop: true)
-    |> redirect(to: "/")
   end
 
   def callback(%{assigns: %{uberauth_failure: _fails}} = conn, _params) do
@@ -36,17 +30,6 @@ defmodule WritingWeb.AuthController do
     end
   end
 
-  # def sign_in_user(conn, %{"user" => user}) do
-  #   case Accounts.user_exists? do
-  #     true ->
-  #       # User already exists
-
-  #     false ->
-  #       # No user yet, we should create one
-
-  #   end
-  # end
-
   def sign_up_or_sign_in_user(conn, params) do
     case Accounts.admin_exists? do
       true ->
@@ -57,12 +40,9 @@ defmodule WritingWeb.AuthController do
   end
 
   def sign_up_user(conn, %{"user" => user}) do
-    IO.inspect user
     case Accounts.create_user(user) do
       {:ok, user} ->
-        conn
-        |> put_flash(:info, "Successfully authenticated.")
-        |> redirect(to: admin_path(conn, :index))
+        auth_user(conn, user)
       {:error, reason} ->
         IO.inspect reason
         conn
@@ -72,16 +52,28 @@ defmodule WritingWeb.AuthController do
   end
 
   def sign_in_user(conn, %{"user" => user}) do
+    IO.inspect user
     case Accounts.get_user_by_email(user.email) do
       %User{} = user ->
-        conn
-        |> put_flash(:info, "Successfully authenticated.")
-        |> redirect(to: admin_path(conn, :index))
+        auth_user(conn, user)
       nil ->
         conn
         |> put_flash(:error, "Error logging in.")
         |> redirect(to: admin_path(conn, :login))
     end
+  end
+
+  def auth_user(conn, %User{} = user) do
+    conn
+    |> Writing.Guardian.Plug.sign_in(user)
+    |> Writing.Guardian.Plug.remember_me(user, %{}, [])
+    |> put_flash(:info, "Successfully authenticated.")
+    |> redirect(to: admin_path(conn, :index))
+  end
+
+  def auth_error(conn, {_type, _reason}, _opts) do
+    conn
+    |> redirect(to: admin_path(conn, :login))
   end
 
 end

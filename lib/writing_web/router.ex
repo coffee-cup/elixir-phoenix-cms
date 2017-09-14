@@ -9,16 +9,13 @@ defmodule WritingWeb.Router do
     plug :put_secure_browser_headers
   end
 
-  pipeline :auth do
-  end
-
   pipeline :api do
     plug :accepts, ["json"]
   end
 
   scope "/admin", WritingWeb do
     pipe_through :browser
-    pipe_through :auth
+    pipe_through Writing.AuthAccessPipeline
 
     get "/", AdminController, :index
     resources "/articles", ArticleController, only: [:index, :create, :edit, :update, :delete]
@@ -37,6 +34,7 @@ defmodule WritingWeb.Router do
 
     get "/", PageController, :index
     get "/login", AdminController, :login
+    get "/logout", AdminController, :logout
     get "/:slug", ArticleControler, :show
   end
 

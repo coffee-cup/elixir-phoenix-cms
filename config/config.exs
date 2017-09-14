@@ -37,15 +37,19 @@ config :ueberauth, Ueberauth.Strategy.Google.OAuth,
   redirect_uri: System.get_env("GOOGLE_CALLBACK_URL")
 
 # Guardian configuration
-config :guardian, Guardian,
+config :writing, Writing.Guardian,
   allonpd_algos: ["HS512"], # optional
   verify_module: Guardian.JWT,  # optional
-  issuer: "BetterNotes",
+  issuer: "Writing",
   ttl: { 30, :days },
   allowed_drift: 2000,
   verify_issuer: true, # optional
   secret_key: System.get_env("GUARDIAN_SECRET") || "fZu4/Vr4nt5B9zN722TPcxB4EWfsmJgugRGkWp2OMr2bWvuGyJ6Ki8scsxm3bRJl",
-  serializer: BetterNotes.GuardianSerializer
+  serializer: Writing.Guardian
+
+config :writing, Writing.AuthAccessPipeline,
+  module: Writing.Guardian,
+  error_handler: WritingWeb.AuthController
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
