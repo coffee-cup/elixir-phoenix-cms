@@ -16,9 +16,11 @@ defmodule Writing.Guardian do
   def resource_from_claims(claims) do
     IO.inspect claims
 
-    {:ok, Accounts.get_user!(claims["sub"])}
+    case Accounts.get_user(claims["sub"]) do
+      %User{} = user -> {:ok, user}
+      _ -> {:error, "Resource not found"}
+    end
   end
-  def resource_from_claims(_claims), do: {:error, "Unknonw resource type"}
 
   # def resource_from_claims(claims) do
   #   {:ok, find_me_a_resource(claims["sub"])}

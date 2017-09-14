@@ -18,7 +18,7 @@ defmodule WritingWeb.Router do
     pipe_through Writing.AuthAccessPipeline
 
     get "/", AdminController, :index
-    resources "/articles", ArticleController, only: [:index, :create, :edit, :update, :delete]
+    resources "/articles", ArticleController, only: [:index, :new, :create, :edit, :update, :delete]
   end
 
   scope "/auth", WritingWeb do
