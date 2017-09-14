@@ -1,5 +1,13 @@
-<div class="admin-login">
-  <h1 class="f1">Admin Login</h1>
+<div class="admin-login full flex ac jc">
+  <div>
+    <%= if @is_admin do %>
+      <h1 class="f-subheadline-ns f1 mv0">Login</h1>
+      <h2>Admins only please.<h2>
+    <% else %>
+      <h1 class="f-subheadline-ns f1 mv0">Hey There!</h1>
+      <h2>Create an account to get started.<h2>
+    <% end %>
 
-  <a href="/auth/google">Login with Google</a>
+    <a href="/auth/google" class="button button--large w-100">Login with Google</a>
+  </div>
 </div>

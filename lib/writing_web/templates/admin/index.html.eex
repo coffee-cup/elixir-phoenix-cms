@@ -1,3 +1,12 @@
 <div class="admin">
-  <h1 class="f1">Admin</h1>
+  <h1 class="f1">Admin Dashboard</h1>
+  <p>All systems go.</p>
+
+  <p>
+    <a href="<%= article_path(@conn, :index) %>">To the articles</a>
+  </p>
+
+  <p>
+    <a href="<%= admin_path(@conn, :logout) %>">Logout</a>
+  </p>
 </div>
