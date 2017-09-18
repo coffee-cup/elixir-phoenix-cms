@@ -2,34 +2,6 @@
   <h1 class="f1">Your Articles</h1>
 
   <%= render WritingWeb.SharedView, "articles.html", assigns %>
+
+  <span><%= link "New Article", to: article_path(@conn, :new), class: "button" %></span>
 </div>
-
-<table class="table">
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Body</th>
-      <th>Draft</th>
-      <th>Image</th>
-
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-<%= for article <- @articles do %>
-    <tr>
-      <td><%= article.title %></td>
-      <td><%= article.body %></td>
-      <td><%= article.draft %></td>
-      <td><%= article.image %></td>
-
-      <td class="text-right">
-        <span><%= link "Edit", to: article_path(@conn, :edit, article), class: "btn btn-default btn-xs" %></span>
-        <span><%= link "Delete", to: article_path(@conn, :delete, article), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %></span>
-      </td>
-    </tr>
-<% end %>
-  </tbody>
-</table>
-
-<span><%= link "New Article", to: article_path(@conn, :new) %></span>

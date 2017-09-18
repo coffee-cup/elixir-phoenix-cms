@@ -25,7 +25,7 @@
         <%= if @is_admin do %>
           <p>You are <a href="/admin">Admin</a>
         <%= end %>
-        <p class="f5 pv4">Made with <span class="heart">♥</span> by <a href="https://jakerunzer.xyz">jakerunzer</a></p>
+        <p class="f5 pt2 pb4">Made with <span class="heart">♥</span> by <a href="https://jakerunzer.xyz">jakerunzer</a></p>
       </footer>
 
     </div> <!-- /container -->

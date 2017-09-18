@@ -1,8 +1,17 @@
 <div class="articles">
   <ul class="articles__list none">
     <%= for article <- @articles do %>
-      <li class="article__item">
+      <li class="article__item flex ac">
+        <span class="f6 mr4 text-lightgray">
+          <%= article.inserted_at %>
+        </span>
         <p class="f3"><%= article.title %></p>
+
+        <%= if @is_admin do %>
+          <span class="f6 ml4">
+            <%= link "edit", to: article_path(@conn, :edit, article), class: "" %>
+          </span>
+        <%= end %>
       </li>
     <% end %>
   </ul>
