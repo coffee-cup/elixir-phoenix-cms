@@ -1,4 +1,4 @@
-defmodule Writing.AuthAccessPipeline do
+defmodule Writing.Plugs.AuthAccessPipeline do
   use Guardian.Plug.Pipeline, otp_app: :writing
 
   import Plug.Conn
@@ -6,7 +6,7 @@ defmodule Writing.AuthAccessPipeline do
   plug Guardian.Plug.VerifySession
   plug Guardian.Plug.VerifyHeader
   plug Guardian.Plug.EnsureAuthenticated
-  plug Guardian.Plug.LoadResource
+  plug Guardian.Plug.LoadResource, ensure: true
   plug :load_user
 
   @doc """

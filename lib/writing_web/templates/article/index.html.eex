@@ -1,4 +1,8 @@
-<h1 class="f1">All Articles</h1>
+<div class="admin__articles">
+  <h1 class="f1">Your Articles</h1>
+
+  <%= render WritingWeb.SharedView, "articles.html", assigns %>
+</div>
 
 <table class="table">
   <thead>

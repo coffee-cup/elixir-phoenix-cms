@@ -19,5 +19,6 @@ defmodule Writing.Accounts.Article do
     article
     |> cast(attrs, [:slug, :title, :body, :draft, :image])
     |> validate_required([:slug, :title, :body, :draft])
+    |> unique_constraint(:slug)
   end
 end

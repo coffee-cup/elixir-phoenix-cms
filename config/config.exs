@@ -47,7 +47,7 @@ config :writing, Writing.Guardian,
   secret_key: System.get_env("GUARDIAN_SECRET") || "fZu4/Vr4nt5B9zN722TPcxB4EWfsmJgugRGkWp2OMr2bWvuGyJ6Ki8scsxm3bRJl",
   serializer: Writing.Guardian
 
-config :writing, Writing.AuthAccessPipeline,
+config :writing, Writing.Plugs.AuthAccessPipeline,
   module: Writing.Guardian,
   error_handler: WritingWeb.AuthController
 

@@ -23,6 +23,6 @@ defmodule WritingWeb.AdminController do
 
   def admin_check(conn, _) do
     conn
-    |> assign(:is_admin, Accounts.admin_exists?)
+    |> assign(:admin_exists, Accounts.admin_exists?)
   end
 end

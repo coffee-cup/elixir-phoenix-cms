@@ -1,6 +1,8 @@
 defmodule WritingWeb.Router do
   use WritingWeb, :router
 
+  alias Writing.Plugs
+
   pipeline :browser do
     plug :accepts, ["html"]
     plug :fetch_session
@@ -15,14 +17,15 @@ defmodule WritingWeb.Router do
 
   scope "/admin", WritingWeb do
     pipe_through :browser
-    pipe_through Writing.AuthAccessPipeline
+    pipe_through Plugs.AuthAccessPipeline
+    pipe_through Plugs.IsAdmin
 
     get "/", AdminController, :index
     resources "/articles", ArticleController, only: [:index, :new, :create, :edit, :update, :delete]
   end
 
   scope "/auth", WritingWeb do
-    pipe_through [:browser]
+    pipe_through :browser
 
     get "/:provider", AuthController, :request
     get "/:provider/callback", AuthController, :callback
@@ -30,12 +33,13 @@ defmodule WritingWeb.Router do
   end
 
   scope "/", WritingWeb do
-    pipe_through :browser # Use the default browser stack
+    pipe_through :browser
+    pipe_through Plugs.IsAdmin
 
     get "/", PageController, :index
     get "/login", AdminController, :login
     get "/logout", AdminController, :logout
-    get "/:slug", ArticleControler, :show
+    get "/:slug", ArticleController, :show
   end
 
   # Other scopes may use custom stacks.

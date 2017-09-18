@@ -1,6 +1,6 @@
 <div class="admin-login full flex ac jc">
   <div>
-    <%= if @is_admin do %>
+    <%= if @admin_exists do %>
       <h1 class="f-subheadline-ns f1 mv0">Login</h1>
       <h2>Admins only please.<h2>
     <% else %>

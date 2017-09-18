@@ -17,9 +17,16 @@
       <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
       <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
 
-      <main role="main">
+      <main role="main" class="full">
         <%= render @view_module, @view_template, assigns %>
       </main>
+
+      <footer class="footer">
+        <%= if @is_admin do %>
+          <p>You are <a href="/admin">Admin</a>
+        <%= end %>
+        <p class="f5 pv4">Made with <span class="heart">♥</span> by <a href="https://jakerunzer.xyz">jakerunzer</a></p>
+      </footer>
 
     </div> <!-- /container -->
     <script src="<%= static_path(@conn, "/app.js") %>"></script>

@@ -7,7 +7,6 @@
 @import 'root';
 @import 'forms';
 @import 'components/components';
-
 // :)
 * {
   box-sizing: border-box;
@@ -15,10 +14,13 @@
 
 // Text Selection Colour
 ::selection {
-  background: $selection; /* WebKit/Blink Browsers */
+  background: $selection;
+  /* WebKit/Blink Browsers */
 }
+
 ::-moz-selection {
-  background: $selection; /* Gecko Browsers */
+  background: $selection;
+  /* Gecko Browsers */
 }
 
 html,
@@ -30,10 +32,8 @@ body {
 
 body {
   overflow-x: hidden;
-
   color: $text-dark;
   background-color: $background-colour;
-
   /* Better Font Rendering =========== */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

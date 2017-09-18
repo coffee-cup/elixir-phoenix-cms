@@ -3,6 +3,7 @@ defmodule WritingWeb.ArticleController do
 
   alias Writing.Accounts
   alias Writing.Accounts.Article
+  alias WritingWeb.ErrorView
 
   def index(conn, _params) do
     articles = Accounts.list_articles()
@@ -15,19 +16,25 @@ defmodule WritingWeb.ArticleController do
   end
 
   def create(conn, %{"article" => article_params}) do
+    IO.inspect article_params
     case Accounts.create_article(article_params) do
       {:ok, article} ->
         conn
         |> put_flash(:info, "Article created successfully.")
         |> redirect(to: article_path(conn, :show, article))
       {:error, %Ecto.Changeset{} = changeset} ->
+        IO.puts "ERRRRROR\n\n\n\n"
         render(conn, "new.html", changeset: changeset)
     end
   end
 
-  def show(conn, %{"id" => id}) do
-    article = Accounts.get_article!(id)
-    render(conn, "show.html", article: article)
+  def show(conn, %{"slug" => slug}) do
+    case Accounts.get_article_by_slug(slug) do
+      %Article{} = article ->
+        render(conn, "show.html", article: article)
+      _ ->
+        render(conn, ErrorView, "404.html")
+    end
   end
 
   def edit(conn, %{"id" => id}) do

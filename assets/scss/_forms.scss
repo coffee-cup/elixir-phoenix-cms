@@ -1,12 +1,31 @@
 input,
 textarea,
 button {
-  padding: .5rem;
+  padding: 0.5rem;
   border: none;
   outline: none;
-  appearance: none;
+  -webkit-appearance: none;
 }
 
 button {
   cursor: pointer;
+}
+
+label {
+  display: block;
+}
+
+input,
+.input,
+textarea {
+  margin: 0.5rem 0;
+  width: 100%;
+  max-width: 26rem;
+  color: $text-dark;
+  background-color: $lightgray;
+  border-radius: $bradius;
+  font-size: 1.1rem;
+  &::placeholder {
+    color: $text-grey;
+  }
 }
