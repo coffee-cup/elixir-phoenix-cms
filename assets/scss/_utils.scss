@@ -4,6 +4,14 @@
   font-family: $mono;
 }
 
+.sans {
+  font-family: $sans;
+}
+
+.serif {
+  font-family: $serif;
+}
+
 .dark-header {
   color: $primary-colour;
 }
@@ -82,7 +90,7 @@
 .st {
   text-decoration: line-through;
   color: $primary-colour;
-  >* {
+  > * {
     color: $text-dark;
   }
 }

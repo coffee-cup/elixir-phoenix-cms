@@ -1,4 +1,4 @@
-<h2>Edit Article</h2>
+<h3 class="f5">Edit Article</h3>
 
 <%= render "form.html", Map.put(assigns, :action, article_path(@conn, :update, @article)) %>
 

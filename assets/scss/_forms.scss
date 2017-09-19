@@ -11,8 +11,20 @@ button {
   cursor: pointer;
 }
 
-label {
-  display: block;
+.form-group {
+  display: flex;
+  margin-bottom: 0.5rem;
+  flex-direction: column;
+  label {
+    display: block;
+    margin-bottom: 0.25rem;
+    font-family: $sans;
+    font-size: 0.8rem;
+  }
+  input,
+  textarea {
+    margin: 0;
+  }
 }
 
 input,
@@ -20,12 +32,22 @@ input,
 textarea {
   margin: 0.5rem 0;
   width: 100%;
-  max-width: 26rem;
   color: $text-dark;
   background-color: $lightgray;
   border-radius: $bradius;
   font-size: 1.1rem;
   &::placeholder {
     color: $text-grey;
+  }
+}
+
+input[type='checkbox'] {
+  outline: none;
+  width: 2.2rem;
+  height: 2.2rem;
+  border-radius: $bradius;
+  transition: background-color 250ms ease-out;
+  &:checked {
+    background-color: $primary-colour;
   }
 }
