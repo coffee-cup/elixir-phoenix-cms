@@ -1,0 +1,6 @@
+<%= if @is_admin do %>
+  <div class="flex-ns sb">
+    <p>You are <a href="/admin">Admin</a>
+    <p><a href="/logout">Logout</a>
+  </div>
+<%= end %>

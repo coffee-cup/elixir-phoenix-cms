@@ -21,12 +21,11 @@
         <%= render @view_module, @view_template, assigns %>
       </main>
 
-      <footer class="footer">
-        <%= if @is_admin do %>
-          <p>You are <a href="/admin">Admin</a>
-        <%= end %>
-        <p class="f5 pt2 pb4">Made with <span class="heart">♥</span> by <a href="https://jakerunzer.xyz">jakerunzer</a></p>
-      </footer>
+    <%= if @is_admin do %>
+      <%= render WritingWeb.SharedView, "admin_footer.html", assigns %>
+    <%= else %>
+      <%= render WritingWeb.SharedView, "footer.html", assigns %>
+    <%= end %>
 
     </div> <!-- /container -->
     <script src="<%= static_path(@conn, "/app.js") %>"></script>

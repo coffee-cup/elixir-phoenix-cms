@@ -220,6 +220,11 @@
 // Layout
 .flex {
   display: flex;
+  &-ns {
+    @include max-screen($small) {
+      display: block;
+    }
+  }
 }
 
 .flex-w {
