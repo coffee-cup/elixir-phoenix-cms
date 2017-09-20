@@ -6,8 +6,9 @@ defmodule WritingWeb.ArticleController do
   alias WritingWeb.ErrorView
 
   def index(conn, _params) do
-    articles = Accounts.list_articles()
-    render(conn, "index.html", articles: articles)
+    published = Accounts.list_articles_draft(false)
+    drafts = Accounts.list_articles_draft(true)
+    render(conn, "index.html", published: published, drafts: drafts)
   end
 
   def new(conn, _params) do
@@ -23,7 +24,6 @@ defmodule WritingWeb.ArticleController do
         |> put_flash(:info, "Article created successfully.")
         |> redirect(to: article_path(conn, :show, article))
       {:error, %Ecto.Changeset{} = changeset} ->
-        IO.puts "ERRRRROR\n\n\n\n"
         render(conn, "new.html", changeset: changeset)
     end
   end

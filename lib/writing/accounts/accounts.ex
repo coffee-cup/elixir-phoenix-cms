@@ -17,8 +17,16 @@ defmodule Writing.Accounts do
       [%Article{}, ...]
 
   """
-  def list_articles do
+  def list_articles() do
     Repo.all(Article)
+  end
+
+  @doc """
+  Returns list of articles where draft == `draft`.
+  """
+  def list_articles_draft(draft \\ true) do
+    from(a in Article, where: a.draft == ^draft)
+    |> Repo.all()
   end
 
   @doc """
