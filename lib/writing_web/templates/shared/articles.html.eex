@@ -11,7 +11,7 @@
           <span class="f6 ml4">
             <%= link "edit", to: article_path(@conn, :edit, article), class: "" %>
           </span>
-        <%= end %>
+        <% end %>
       </li>
     <% end %>
   </ul>

@@ -6,7 +6,8 @@ defmodule WritingWeb.AdminController do
   plug :admin_check
 
   def index(conn, _params) do
-    render conn, "index.html"
+    # render conn, "index.html"
+    conn |> redirect(to: WritingWeb.Router.Helpers.article_path(conn, :index))
   end
 
   def login(conn, _params) do

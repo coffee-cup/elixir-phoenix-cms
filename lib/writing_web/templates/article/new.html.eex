@@ -1,4 +1,4 @@
-<h3 class="f5">New Article</h3>
+<%= render WritingWeb.SharedView, "header.html", Map.put(assigns, :header_title, "New Article") %>
 
 <%= render "form.html", Map.put(assigns, :action, article_path(@conn, :create)) %>
 

@@ -1,6 +1,4 @@
-<header class="header">
-  <h1 class="f-headline-ns f-subheadline mt2">w.</h1>
-</header>
+<%= render WritingWeb.SharedView, "large_header.html", assigns %>
 
 <div class="section articles">
   <h1 class="f2">Articles</h1>
