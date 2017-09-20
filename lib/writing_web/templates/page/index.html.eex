@@ -1,38 +1,7 @@
 <%= render WritingWeb.SharedView, "large_header.html", assigns %>
 
-<div class="section articles">
+<div class="home__articles">
   <h1 class="f2">Articles</h1>
 
-  <ul class="articles__list none lh-copy">
-    <li class="article">
-      <a href="#" class="none f4 flex afe">
-        <span class="article__date mr3 mb1 gray f5">12/11/17</span>
-        <span class="article__title f4">Coding stuff</span>
-      </a>
-    </li>
-    <li class="article">
-      <a href="#" class="none f4 flex afe">
-        <span class="article__date mr3 mb1 gray f5">12/11/17</span>
-        <span class="article__title f4">Coding stuff</span>
-      </a>
-    </li>
-    <li class="article">
-      <a href="#" class="none f4 flex afe">
-        <span class="article__date mr3 mb1 gray f5">12/11/17</span>
-        <span class="article__title f4">Coding stuff</span>
-      </a>
-    </li>
-    <li class="article">
-      <a href="#" class="none f4 flex afe">
-        <span class="article__date mr3 mb1 gray f5">12/11/17</span>
-        <span class="article__title f4">Coding stuff</span>
-      </a>
-    </li>
-    <li class="article">
-      <a href="#" class="none f4 flex afe">
-        <span class="article__date mr3 mb1 gray f5">12/11/17</span>
-        <span class="article__title f4">Coding stuff</span>
-      </a>
-    </li>
-  </ul>
+  <%= render WritingWeb.SharedView, "articles.html", assigns %>
 </div>

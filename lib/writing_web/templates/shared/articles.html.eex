@@ -5,7 +5,9 @@
         <span class="f6 mr4 text-lightgray">
           <%= article.inserted_at %>
         </span>
-        <p class="f3"><%= article.title %></p>
+        <a href="<%= article_path(@conn, :show, article.slug) %>" class="none">
+          <p class="f3"><%= article.title %></p>
+        </a>
 
         <%= if @is_admin do %>
           <span class="f6 ml4">

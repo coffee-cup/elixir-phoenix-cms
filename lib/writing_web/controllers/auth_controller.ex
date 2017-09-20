@@ -3,11 +3,9 @@ defmodule WritingWeb.AuthController do
 
   plug Ueberauth
 
-  alias Ueberauth.Strategy.Helpers
   alias Writing.Accounts
   alias Writing.Accounts.AuthUser
   alias Writing.Accounts.User
-  alias WritingWeb.ErrorView
 
   def request(conn, _params) do
     configure_session(conn, drop: true)

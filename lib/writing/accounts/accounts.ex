@@ -24,7 +24,7 @@ defmodule Writing.Accounts do
   @doc """
   Returns list of articles where draft == `draft`.
   """
-  def list_articles_draft(draft \\ true) do
+  def list_articles_draft(draft \\ false) do
     from(a in Article, where: a.draft == ^draft)
     |> Repo.all()
   end

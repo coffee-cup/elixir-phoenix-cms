@@ -3,8 +3,8 @@ defmodule WritingWeb.ArticleControllerTest do
 
   alias Writing.Accounts
 
-  @create_attrs %{body: "some body", draft: true, image: "some image", title: "some title"}
-  @update_attrs %{body: "some updated body", draft: false, image: "some updated image", title: "some updated title"}
+  @create_attrs %{body: "some body", draft: true, image: "some image", title: "some title", slug: "some-title"}
+  @update_attrs %{body: "some updated body", draft: false, image: "some updated image", title: "some updated title", slug: "some-updated-title"}
   @invalid_attrs %{body: nil, draft: nil, image: nil, title: nil}
 
   def fixture(:article) do

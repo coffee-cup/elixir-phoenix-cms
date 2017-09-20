@@ -1,7 +1,10 @@
 defmodule WritingWeb.PageController do
   use WritingWeb, :controller
 
+  alias Writing.Accounts
+
   def index(conn, _params) do
-    render conn, "index.html"
+    conn
+    |> render("index.html", articles: Accounts.list_articles_draft(false))
   end
 end

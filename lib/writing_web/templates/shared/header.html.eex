@@ -1,5 +1,5 @@
 <header class="header flex ab mb2">
-  <h1 class="f2-ns f3 mb0 mt2 mr4">
+  <h1 class="f2-ns f3 mb0 mr4">
     <a href="/" class="none">w.</a>
   </h1>
   <%= if Map.has_key?(assigns, :header_title) do %>
