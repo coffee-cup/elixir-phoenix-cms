@@ -27,7 +27,7 @@
         <%# Draft %>
         <div class="form__article--draft form-group">
           <%= label f, :draft %>
-          <%= checkbox f, :draft, class: "checkbox" %>
+          <%= checkbox f, :draft, class: "checkbox", value: true %>
           <%= error_tag f, :draft %>
         </div>
 
