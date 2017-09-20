@@ -51,6 +51,10 @@ config :writing, Writing.Plugs.AuthAccessPipeline,
   module: Writing.Guardian,
   error_handler: WritingWeb.AuthController
 
+config :writing, Writing.Plugs.IsAdmin,
+  module: Writing.Guardian,
+  error_handler: Writing.Plugs.IsAdmin
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env}.exs"

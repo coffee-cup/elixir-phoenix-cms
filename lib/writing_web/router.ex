@@ -15,10 +15,14 @@ defmodule WritingWeb.Router do
     plug :accepts, ["json"]
   end
 
+  pipeline :check_admin do
+    plug Plugs.IsAdmin
+  end
+
   scope "/admin", WritingWeb do
     pipe_through :browser
     pipe_through Plugs.AuthAccessPipeline
-    pipe_through Plugs.IsAdmin
+    pipe_through :check_admin
 
     get "/", AdminController, :index
     resources "/articles", ArticleController, only: [:index, :new, :create, :edit, :update, :delete]
@@ -34,7 +38,7 @@ defmodule WritingWeb.Router do
 
   scope "/", WritingWeb do
     pipe_through :browser
-    pipe_through Plugs.IsAdmin
+    pipe_through :check_admin
 
     get "/", PageController, :index
     get "/login", AdminController, :login

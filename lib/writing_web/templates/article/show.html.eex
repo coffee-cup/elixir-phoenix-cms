@@ -1,7 +1,13 @@
+<%= if @article.draft do %>
+  <div class="article__draft mv0 bg-gold bleed">
+    <p class="f4 pv2 mv0 container">This is a draft</p>
+  </div>
+<% end %>
+
 <%= render WritingWeb.SharedView, "header.html", assigns %>
 
 <div class="article">
-  <h2 class="f1"><%= @article.title %></h2>
+  <h2 class="f1-ns f2"><%= @article.title %></h2>
 
   <p class="article__body lh-copy measure">
     <%= @article.body %>

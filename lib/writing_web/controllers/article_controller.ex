@@ -29,7 +29,7 @@ defmodule WritingWeb.ArticleController do
   end
 
   def show(conn, %{"slug" => slug}) do
-    case Accounts.get_article_by_slug(slug) do
+     case Accounts.get_article_by_slug(slug) do
       %Article{} = article ->
         render(conn, "show.html", article: article)
       _ ->

@@ -90,7 +90,7 @@
 .st {
   text-decoration: line-through;
   color: $primary-colour;
-  >* {
+  > * {
     color: $text-dark;
   }
 }
@@ -129,9 +129,30 @@
 }
 
 .container {
+  --gutter: 0rem;
   max-width: var(--m-width);
   margin-left: auto;
   margin-right: auto;
+  padding-left: var(--gutter);
+  padding-right: var(--gutter);
+  @include max-screen($medium) {
+    --gutter: 2rem;
+  }
+  @include max-screen($small) {
+    --gutter: 1rem;
+  }
+}
+
+.bleed {
+  --space: calc(-0.5 * var(--m-width));
+  margin-right: var(--space);
+  margin-left: var(--space);
+  @include max-screen($medium) {
+    --space: -2rem;
+  }
+  @include max-screen($small) {
+    --space: -1rem;
+  }
 }
 
 .inline {

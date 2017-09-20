@@ -45,7 +45,7 @@ defmodule Writing.Accounts do
   """
   def get_article!(id), do: Repo.get!(Article, id)
 
-  def get_article_by_slug(slug, draft \\ false), do: Repo.get_by(Article, slug: slug, draft: draft)
+  def get_article_by_slug(slug), do: Repo.get_by(Article, slug: slug)
 
   @doc """
   Creates a article.
