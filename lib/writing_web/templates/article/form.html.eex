@@ -61,3 +61,5 @@
     </div>
   <% end %>
 </div>
+
+<script src="<%= static_path(@conn, "/form.js") %>"></script>

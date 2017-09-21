@@ -20,9 +20,9 @@
 
     <%= if @is_admin do %>
       <%= render WritingWeb.SharedView, "admin_footer.html", assigns %>
-    <%= else %>
+    <% else %>
       <%= render WritingWeb.SharedView, "footer.html", assigns %>
-    <%= end %>
+    <% end %>
 
     </div> <!-- /container -->
     <script src="<%= static_path(@conn, "/app.js") %>"></script>

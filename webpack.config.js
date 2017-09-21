@@ -18,11 +18,14 @@ console.log(
 );
 
 const config = {
-  entry: ['./assets/js/app.js'],
+  entry: {
+    app: './assets/js/app.js',
+    form: './assets/js/form.js'
+  },
 
   output: {
     path: path.join(__dirname, '/priv/static'),
-    filename: 'app.js'
+    filename: '[name].js'
   },
 
   watch: !isProd,

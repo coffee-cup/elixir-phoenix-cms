@@ -35,11 +35,8 @@
     "es6": true
   },
   "parser": "babel-eslint",
-  "plugins": [
-    "babel"
-  ],
+  "plugins": ["babel"],
   "rules": {
-
     /*Possible Errors */
     "comma-dangle": [1, "never"],
     "no-cond-assign": [1, "except-parens"],
@@ -116,7 +113,10 @@
     "no-throw-literal": 1,
     "no-unused-expressions": 0,
     "no-void": 0,
-    "no-warning-comments": [1, { "terms": ["todo", "tofix"], "location": "start" }],
+    "no-warning-comments": [
+      1,
+      { "terms": ["todo", "tofix"], "location": "start" }
+    ],
     "no-with": 1,
     "radix": 1,
     "vars-on-top": 1,
@@ -210,6 +210,6 @@
     "max-params": 0,
     "max-statements": 0,
     "no-bitwise": 1,
-    "no-plusplus": 1,
+    "no-plusplus": 1
   }
 }

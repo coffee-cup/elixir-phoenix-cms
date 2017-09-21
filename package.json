@@ -7,6 +7,7 @@
     "test": "mix test && npm run build"
   },
   "dependencies": {
+    "simplemde": "^1.11.2",
     "tachyons": "^4.7.4"
   },
   "devDependencies": {
