@@ -15,15 +15,20 @@ button {
   display: flex;
   margin-bottom: 0.5rem;
   flex-direction: column;
-  label {
-    display: block;
-    margin-bottom: 0.25rem;
-    font-family: $sans;
-    font-size: 0.8rem;
-  }
   input,
   textarea {
     margin: 0;
+  }
+  .form-label-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.25rem;
+    font-family: $sans;
+    font-size: 0.8rem;
+    .help-block {
+      margin-left: 1rem;
+      color: $red;
+    }
   }
 }
 

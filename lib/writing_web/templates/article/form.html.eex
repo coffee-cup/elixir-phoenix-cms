@@ -1,13 +1,6 @@
 <div class="form__article">
   <%= form_for @changeset, @action, fn f -> %>
 
-    <%# Error %>
-    <%= if @changeset.action do %>
-      <div class="alert alert-danger">
-        <p>Oops, something went wrong! Please check the errors below.</p>
-      </div>
-    <% end %>
-
     <%# Title %>
     <div class="mt4 mb0">
       <%= text_input f, :title, placeholder: "Title", class: "input--primary" %>
@@ -15,37 +8,52 @@
 
     <div class="measure-wide">
 
+      <%# Error %>
+      <%= if @changeset.action do %>
+        <div>
+          <p>Oops, something went wrong! Please check the errors below.</p>
+        </div>
+      <% end %>
+
       <div class="flex row ac">
 
         <%# Slug %>
         <div class="form__article--slug form-group fg1 mr2">
-          <%= label f, :slug %>
+          <div class="form-label-group">
+            <%= label f, :slug %>
+            <%= error_tag f, :slug %>
+          </div>
           <%= text_input f, :slug, placeholder: "the-article-title"  %>
-          <%= error_tag f, :slug %>
         </div>
 
         <%# Draft %>
         <div class="form__article--draft form-group">
-          <%= label f, :draft %>
+          <div class="form-label-group">
+            <%= label f, :draft %>
+            <%= error_tag f, :draft %>
+          </div>
           <%= checkbox f, :draft, class: "checkbox", value: true %>
-          <%= error_tag f, :draft %>
         </div>
 
       </div>
 
       <%# Image %>
       <div class="form__article--image form-group">
-        <%= label f, :image %>
+        <div class="form-label-group">
+          <%= label f, :image %>
+          <%= error_tag f, :image %>
+        </div>
         <%= text_input f, :image, placeholder: "http://image-url.jpg" %>
-        <%= error_tag f, :image %>
       </div>
 
     </div>
 
     <div class="form-group">
-      <%= label f, :body, class: "control-label" %>
+      <div class="form-label-group">
+        <%= label f, :body %>
+        <%= error_tag f, :body %>
+      </div>
       <%= textarea f, :body, class: "form-group" %>
-      <%= error_tag f, :body %>
     </div>
 
     <div class="form-group">

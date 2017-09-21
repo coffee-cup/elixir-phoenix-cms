@@ -56,6 +56,10 @@
   color: $text-dark;
 }
 
+.error {
+  color: $red;
+}
+
 .hover-main {
   transition: $s-animation;
   &:hover {
@@ -144,7 +148,7 @@
 }
 
 .bleed {
-  --space: calc(-0.5 * var(--m-width));
+  --space: calc(-1 * var(--m-width));
   margin-right: var(--space);
   margin-left: var(--space);
   @include max-screen($medium) {
