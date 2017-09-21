@@ -19,16 +19,17 @@ button {
   textarea {
     margin: 0;
   }
-  .form-label-group {
-    display: flex;
-    align-items: center;
-    margin-bottom: 0.25rem;
-    font-family: $sans;
-    font-size: 0.8rem;
-    .help-block {
-      margin-left: 1rem;
-      color: $red;
-    }
+}
+
+.form-label-group {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.25rem;
+  font-family: $sans;
+  font-size: 0.8rem;
+  .help-block {
+    color: $red;
   }
 }
 

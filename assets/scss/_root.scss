@@ -20,6 +20,15 @@ a.none {
   text-decoration: none;
 }
 
+a.fa {
+  background: none;
+  text-shadow: none;
+  text-decoration: none;
+  &:hover {
+    opacity: 1;
+  }
+}
+
 ul.none {
   padding-left: 0;
   list-style-type: none;

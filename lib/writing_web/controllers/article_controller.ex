@@ -50,7 +50,7 @@ defmodule WritingWeb.ArticleController do
       {:ok, article} ->
         conn
         |> put_flash(:info, "Article updated successfully.")
-        |> redirect(to: article_path(conn, :show, article))
+        |> redirect(to: article_path(conn, :show, article.slug))
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "edit.html", article: article, changeset: changeset)
     end
