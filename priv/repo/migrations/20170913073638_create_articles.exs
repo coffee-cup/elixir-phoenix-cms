@@ -5,7 +5,8 @@ defmodule Writing.Repo.Migrations.CreateArticles do
     create table(:articles) do
       add :slug, :string
       add :title, :string
-      add :body, :text
+      add :text, :text
+      add :html, :text
       add :draft, :boolean, default: false, null: false
       add :image, :string
 

@@ -22,7 +22,8 @@ const titleToSlug = title =>
   title
     .toLowerCase()
     .split(' ')
-    .join('-');
+    .join('-')
+    .replace(/[^a-zA-Z\-]/g, '');
 
 const autoGenerateSlug = () => {
   slugInput.value = titleToSlug(titleInput.value);

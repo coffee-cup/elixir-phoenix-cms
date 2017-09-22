@@ -43,7 +43,8 @@ defmodule Writing.Mixfile do
       {:cowboy, "~> 1.0"},
       {:ueberauth, "~> 0.4"},
       {:guardian, "~> 1.0-beta"},
-      {:ueberauth_google, "~> 0.5"}
+      {:ueberauth_google, "~> 0.5"},
+      {:earmark, "~> 1.2.3"}
     ]
   end
 

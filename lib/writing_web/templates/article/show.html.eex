@@ -7,10 +7,20 @@
 <%= render WritingWeb.SharedView, "header.html", assigns %>
 
 <div class="article">
-  <h2 class="f-subheadline-ns f1"><%= @article.title %></h2>
+  <div class="article__header">
+    <h2 class="f-subheadline-ns f1"><%= @article.title %></h2>
+  </div>
 
-  <p class="article__body measure-wide">
-    <%= @article.body %>
-  </p>
+  <div class="article__body measure-wide">
+    <%= raw(@article.html) %>
+  </div>
+
+  <div class="article__footer">
+    <%= if @is_admin do %>
+      <p>
+        <%= link "edit", to: article_path(@conn, :edit, @article), class: "" %>
+      </p>
+    <% end %>
+  </div>
 
 </div>
