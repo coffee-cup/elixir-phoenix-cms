@@ -11,11 +11,11 @@
     <h2 class="f-subheadline-ns f1"><%= @article.title %></h2>
   </div>
 
-  <div class="article__body measure-wide">
+  <div class="article__body pb4">
     <%= raw(@article.html) %>
   </div>
 
-  <div class="article__footer">
+  <div class="article__footer pb4">
     <%= if @is_admin do %>
       <p>
         <%= link "edit", to: article_path(@conn, :edit, @article), class: "" %>
