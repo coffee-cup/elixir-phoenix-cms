@@ -5,6 +5,9 @@ defmodule Writing.Accounts.Article do
   alias Writing.Accounts.Article
   alias Writing.Parser
 
+  @timestamps_opts [type: Timex.Ecto.DateTime,
+                    autogenerate: {Timex.Ecto.DateTime, :autogenerate, []}]
+
   schema "articles" do
     field :text, :string
     field :html, :string
@@ -14,6 +17,11 @@ defmodule Writing.Accounts.Article do
     field :title, :string
 
     timestamps()
+  end
+
+  def format_date(date) do
+    date
+    |> Timex.format!( "%B %e, %Y", :strftime)
   end
 
   @doc false

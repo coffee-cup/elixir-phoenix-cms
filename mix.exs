@@ -20,7 +20,7 @@ defmodule Writing.Mixfile do
   def application do
     [
       mod: {Writing.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [:logger, :runtime_tools, :timex]
     ]
   end
 
@@ -44,7 +44,9 @@ defmodule Writing.Mixfile do
       {:ueberauth, "~> 0.4"},
       {:guardian, "~> 1.0-beta"},
       {:ueberauth_google, "~> 0.5"},
-      {:earmark, "~> 1.2.3"}
+      {:earmark, "~> 1.2.3"},
+      {:timex, "~> 3.1"},
+      {:timex_ecto, "~> 3.0"}
     ]
   end
 

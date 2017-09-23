@@ -7,8 +7,11 @@
 <%= render WritingWeb.SharedView, "header.html", assigns %>
 
 <div class="article">
-  <div class="article__header">
-    <h2 class="f-subheadline-ns f1"><%= @article.title %></h2>
+  <div class="article__header pv5">
+    <h2 class="f-subheadline-ns f1 mv0"><%= @article.title %></h2>
+    <div class="f6 pt2 text-lightgray">
+      <%= Writing.Accounts.Article.format_date(@article.inserted_at) %>
+    </div>
   </div>
 
   <div class="article__body pb4">

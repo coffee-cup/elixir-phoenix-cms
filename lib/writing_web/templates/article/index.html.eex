@@ -1,15 +1,19 @@
 <%= render WritingWeb.SharedView, "header.html", Map.put(assigns, :header_title, "Your Articles") %>
 
 <div class="admin__articles">
-  <div class="adimin__articles--published">
-    <h2 class="f2 mb0">Published</h2>
-    <%= render WritingWeb.SharedView, "articles.html", Map.put(assigns, :articles, @published) %>
-  </div>
+  <%= if length(@published) > 0 do %>
+    <div class="adimin__articles--published">
+      <h2 class="f2 mb0">Published</h2>
+      <%= render WritingWeb.SharedView, "articles.html", Map.put(assigns, :articles, @published) %>
+    </div>
+  <% end %>
 
-  <div class="adimin__articles--published">
-    <h2 class="f2 mb0">Drafts</h2>
-    <%= render WritingWeb.SharedView, "articles.html", Map.put(assigns, :articles, @drafts) %>
-  </div>
+  <%= if length(@drafts) > 0 do %>
+    <div class="adimin__articles--published">
+      <h2 class="f2 mb0">Drafts</h2>
+      <%= render WritingWeb.SharedView, "articles.html", Map.put(assigns, :articles, @drafts) %>
+    </div>
+  <% end %>
 
   <span><%= link "New", to: article_path(@conn, :new), class: "button button" %></span>
 </div>
