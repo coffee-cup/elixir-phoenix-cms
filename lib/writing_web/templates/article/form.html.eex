@@ -48,14 +48,14 @@
           <%= label f, :image %>
           <%= error_tag f, :image %>
         </div>
-        <%= text_input f, :image, placeholder: "http://image-url.jpg" %>
+        <%= text_input f, :image, placeholder: "Open graph image used for sharing. 1220x630" %>
       </div>
 
     </div>
 
     <div class="form-group">
       <div class="form-label-group">
-        <%= error_tag f, :body %>
+        <%= error_tag f, :text %>
       </div>
       <%= textarea f, :text, class: "form-group editor", id: "js-md-body" %>
     </div>

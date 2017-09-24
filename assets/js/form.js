@@ -12,7 +12,7 @@ const simplemde = new SimpleMDE({
   placeholder: 'Something interesting...',
   status: ['autosave', 'lines', 'words', 'cursor'],
   renderingConfig: {
-    singleLineBreaks: false,
+    singleLineBreaks: true,
     codeSyntaxHighlighting: true
   }
 });
