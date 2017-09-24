@@ -9,6 +9,7 @@ defmodule Writing.Repo.Migrations.CreateArticles do
       add :html, :text
       add :draft, :boolean, default: false, null: false
       add :image, :string
+      add :published_at, :utc_datetime
 
       timestamps()
     end

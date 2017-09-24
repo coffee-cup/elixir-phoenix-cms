@@ -6,14 +6,14 @@
           <div class="flex col">
             <p class="f3 mt3 nb1"><%= article.title %></p>
             <span class="f6 mr4 text-lightgray sans">
-              <%= Writing.Accounts.Article.format_date(article.inserted_at) %>
+              <%= Writing.Accounts.Article.format_date(article) %>
             </span>
           </div>
         </a>
 
         <%= if @is_admin and Map.get(assigns, :show_edit, false) do %>
-          <span class="f6 ml4">
-            <%= link "edit", to: article_path(@conn, :edit, article), class: "" %>
+          <span class="f5 ml4">
+            <%= link "edit", to: article_path(@conn, :edit, article) %>
           </span>
         <% end %>
       </li>

@@ -37,7 +37,7 @@
             <%= label f, :draft %>
             <%= error_tag f, :draft %>
           </div>
-          <%= checkbox f, :draft, class: "checkbox", value: true %>
+          <%= checkbox f, :draft, class: "checkbox" %>
         </div>
 
       </div>

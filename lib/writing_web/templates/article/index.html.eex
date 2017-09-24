@@ -3,14 +3,14 @@
 <div class="admin__articles mt4">
   <%= if length(@published) > 0 do %>
     <div class="adimin__articles--published">
-      <h2 class="f2 mb0">Published</h2>
+      <h2 class="f2 mb2">Published</h2>
       <%= render WritingWeb.SharedView, "articles.html", Map.put(assigns, :articles, @published) %>
     </div>
   <% end %>
 
   <%= if length(@drafts) > 0 do %>
     <div class="adimin__articles--published">
-      <h2 class="f2 mb0">Drafts</h2>
+      <h2 class="f2 mb2">Drafts</h2>
       <%= render WritingWeb.SharedView, "articles.html", Map.put(assigns, :articles, @drafts) %>
     </div>
   <% end %>

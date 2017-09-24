@@ -11,14 +11,21 @@ defmodule Writing.Accounts.Article do
   schema "articles" do
     field :text, :string
     field :html, :string
-    field :draft, :boolean, default: false
+    field :draft, :boolean, default: true
     field :image, :string
     field :slug, :string
     field :title, :string
+    field :published_at, Timex.Ecto.DateTime
 
     timestamps()
   end
 
+  def format_date(%Article{} = article) do
+    case article.published_at do
+      nil -> format_date(article.inserted_at)
+      _ -> format_date(article.published_at)
+    end
+  end
   def format_date(date) do
     date
     |> Timex.format!( "%B %e, %Y", :strftime)
@@ -30,9 +37,25 @@ defmodule Writing.Accounts.Article do
     |> cast(attrs, [:slug, :title, :text, :draft, :image])
     |> validate_required([:slug, :title, :text, :draft])
     |> put_change(:html, Parser.to_html(get_text(attrs)))
+    |> put_change(:published_at, get_published_date(article, attrs))
     |> unique_constraint(:slug)
   end
 
+  @doc """
+  Get the Timex published date for the article.
+  A date is only returned if the article is going from
+  `article.draft` = true to false.
+  """
+  defp get_published_date(article, %{draft: draft}), do: get_published_date(article, draft)
+  defp get_published_date(article, %{"draft" => draft}), do: get_published_date(article, draft)
+  defp get_published_date(article, "false"), do: get_published_date(article, false)
+  defp get_published_date(article, false) do
+    case article.draft do
+      true -> Timex.now
+      false -> article.published_at
+    end
+  end
+  defp get_published_date(_, _), do: nil
 
   defp get_text(%{text: text}), do: text
   defp get_text(%{"text" => text}), do: text
