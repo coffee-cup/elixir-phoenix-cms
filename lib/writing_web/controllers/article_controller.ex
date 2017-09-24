@@ -8,7 +8,7 @@ defmodule WritingWeb.ArticleController do
   def index(conn, _params) do
     published = Accounts.list_articles_draft(false)
     drafts = Accounts.list_articles_draft(true)
-    render(conn, "index.html", published: published, drafts: drafts)
+    render(conn, "index.html", published: published, drafts: drafts, show_edit: true)
   end
 
   def new(conn, _params) do

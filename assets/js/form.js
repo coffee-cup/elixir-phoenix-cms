@@ -5,7 +5,7 @@ const articleId = window.articleId;
 const simplemde = new SimpleMDE({
   element: document.getElementById('js-md-body'),
   autosave: {
-    enabled: true,
+    enabled: articleId !== 'new',
     uniqueId: articleId,
     delay: 1000
   },
