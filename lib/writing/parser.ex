@@ -5,7 +5,7 @@ defmodule Writing.Parser do
   """
   def to_html(text) when is_binary(text) do
     options = %Earmark.Options{
-      code_class_prefix: "lang- language-",
+      code_class_prefix: "",
       gfm: true,
       breaks: true,
       smartypants: true

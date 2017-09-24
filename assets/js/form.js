@@ -10,7 +10,11 @@ const simplemde = new SimpleMDE({
     delay: 1000
   },
   placeholder: 'Something interesting...',
-  status: ['autosave', 'lines', 'words', 'cursor']
+  status: ['autosave', 'lines', 'words', 'cursor'],
+  renderingConfig: {
+    singleLineBreaks: false,
+    codeSyntaxHighlighting: true
+  }
 });
 
 let dirtySlug = false;
