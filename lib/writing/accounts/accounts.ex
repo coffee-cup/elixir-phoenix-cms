@@ -25,7 +25,9 @@ defmodule Writing.Accounts do
   Returns list of articles where draft == `draft`.
   """
   def list_articles_draft(draft \\ false) do
-    from(a in Article, where: a.draft == ^draft)
+    from(a in Article,
+        where: a.draft == ^draft,
+        order_by: [desc: :published_at, desc: :inserted_at])
     |> Repo.all()
   end
 
