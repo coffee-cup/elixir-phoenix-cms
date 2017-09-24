@@ -2,12 +2,54 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
 
-    <title>Hello Writing!</title>
+    <%= if Map.has_key?(assigns, :title) do %>
+      <title><%= Map.get(assigns, :title) %></title>
+    <% else %>
+      <title>w.</title>
+    <% end %>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" type="image/png" href="/favicon-32x32.png?v=2" sizes="32x32">
+    <link rel="icon" type="image/png" href="/favicon-16x16.png?v=2" sizes="16x16">
+    <link rel="shortcut icon" href="/favicon.ico?v=2">
+    <link rel="author" href="humans.txt" />
+
+    <!-- Search Engine -->
+    <meta name="description" content="A collection of articles about things I find interesting.">
+    <!-- Schema.org for Google -->
+    <%= if Map.has_key?(assigns, :title) do %>
+      <meta itemprop="name" content="<%= Map.get(assigns, :title) %>">
+    <% else %>
+      <meta itemprop="name" content="w.">
+    <% end %>
+    <meta itemprop="description" content="A collection of articles about things I find interesting.">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="w.">
+    <meta name="twitter:description" content="A collection of articles about things I find interesting.">
+    <meta name="twitter:creator" content="jakerunzer">
+
+    <!-- Open Graph general (Facebook, Pinterest & Google+) -->
+    <%= if Map.has_key?(assigns, :title) do %>
+      <meta name="og:title" content="<%= Map.get(assigns, :title) %>">
+    <% else %>
+      <meta name="og:title" content="w.">
+    <% end %>
+    <meta name="og:description" content="A collection of articles about things I find interesting.">
+    <meta name="og:url" content="https://elm-phoenix-template.herokuapp.com/">
+    <meta name="og:site_name" content="w.">
+    <meta name="og:type" content="article">
+    <%= if Map.has_key?(assigns, :image) do %>
+      <meta name="og:image" content="<%= Map.get(assigns, :image) %>">
+    <% end %>
+
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+
     <link rel="stylesheet" href="<%= static_path(@conn, "/app.css") %>">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merriweather:400,400i,700">
 

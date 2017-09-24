@@ -17,7 +17,6 @@ defmodule WritingWeb.ArticleController do
   end
 
   def create(conn, %{"article" => article_params}) do
-    IO.inspect article_params
     case Accounts.create_article(article_params) do
       {:ok, article} ->
         conn
@@ -31,7 +30,10 @@ defmodule WritingWeb.ArticleController do
   def show(conn, %{"slug" => slug}) do
      case Accounts.get_article_by_slug(slug) do
       %Article{} = article ->
-        render(conn, "show.html", article: article)
+        render(conn, "show.html",
+          article: article,
+          title: Map.get(article, :title),
+          image: Map.get(article, :image, ""))
       _ ->
         render(conn, ErrorView, "404.html")
     end
