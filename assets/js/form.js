@@ -2,6 +2,7 @@
 
 const articleId = window.articleId;
 
+// eslint-disable-next-line
 const simplemde = new SimpleMDE({
   element: document.getElementById('js-md-body'),
   autosave: {
@@ -33,8 +34,10 @@ const autoGenerateSlug = () => {
   slugInput.value = titleToSlug(titleInput.value);
 };
 
-titleInput.addEventListener('keyup', e => {
-  if (dirtySlug) return;
+titleInput.addEventListener('keyup', () => {
+  if (dirtySlug) {
+    return;
+  }
 
   autoGenerateSlug();
 });

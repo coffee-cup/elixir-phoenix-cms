@@ -33,7 +33,8 @@ defmodule WritingWeb.ArticleController do
         render(conn, "show.html",
           article: article,
           title: Map.get(article, :title),
-          image: Map.get(article, :image, ""))
+          image: Map.get(article, :image),
+          description: String.slice(Map.get(article, :text), 0, 150) <> "...")
       _ ->
         render(conn, ErrorView, "404.html")
     end

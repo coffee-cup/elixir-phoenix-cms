@@ -41,11 +41,9 @@ defmodule Writing.Accounts.Article do
     |> unique_constraint(:slug)
   end
 
-  @doc """
-  Get the Timex published date for the article.
-  A date is only returned if the article is going from
-  `article.draft` = true to false.
-  """
+  # Get the Timex published date for the article.
+  # A date is only returned if the article is going from
+  # `article.draft` = true to false.
   defp get_published_date(article, %{draft: draft}), do: get_published_date(article, draft)
   defp get_published_date(article, %{"draft" => draft}), do: get_published_date(article, draft)
   defp get_published_date(article, "false"), do: get_published_date(article, false)
