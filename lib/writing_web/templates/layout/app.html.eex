@@ -63,7 +63,7 @@
 
     <%# hightlight.js %>
     <script src="<%= static_path(@conn, "/highlight.pack.js") %>"></script>
-    <link rel="stylesheet" href="<%= static_path(@conn, "/github-gist.css") %>">
+    <link rel="stylesheet" href="<%= static_path(@conn, "/atelier-cave-light.css") %>">
     <script>hljs.initHighlightingOnLoad();</script>
   </body>
 </html>

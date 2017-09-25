@@ -12,6 +12,7 @@ const simplemde = new SimpleMDE({
   },
   placeholder: 'Something interesting...',
   status: ['autosave', 'lines', 'words', 'cursor'],
+  indentWithTabs: false,
   renderingConfig: {
     singleLineBreaks: true,
     codeSyntaxHighlighting: true
