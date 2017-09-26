@@ -1,4 +1,4 @@
-defmodule Writing.Plugs.AuthAccessPipeline do
+defmodule WritingWeb.Plugs.AuthAccessPipeline do
   use Guardian.Plug.Pipeline, otp_app: :writing
 
   import Plug.Conn

@@ -47,13 +47,13 @@ config :writing, Writing.Guardian,
   secret_key: System.get_env("GUARDIAN_SECRET") || "fZu4/Vr4nt5B9zN722TPcxB4EWfsmJgugRGkWp2OMr2bWvuGyJ6Ki8scsxm3bRJl",
   serializer: Writing.Guardian
 
-config :writing, Writing.Plugs.AuthAccessPipeline,
+config :writing, WritingWeb.Plugs.AuthAccessPipeline,
   module: Writing.Guardian,
   error_handler: WritingWeb.AuthController
 
-config :writing, Writing.Plugs.IsAdmin,
+config :writing, WritingWeb.Plugs.IsAdmin,
   module: Writing.Guardian,
-  error_handler: Writing.Plugs.IsAdmin
+  error_handler: WritingWeb.Plugs.IsAdmin
 
 
 # Import environment specific config. This must remain at the bottom

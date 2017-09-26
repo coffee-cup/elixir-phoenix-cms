@@ -1,7 +1,7 @@
 defmodule WritingWeb.Router do
   use WritingWeb, :router
 
-  alias Writing.Plugs
+  alias WritingWeb.Plugs
 
   pipeline :browser do
     plug :accepts, ["html"]
@@ -20,16 +20,14 @@ defmodule WritingWeb.Router do
   end
 
   scope "/admin", WritingWeb do
-    pipe_through :browser
-    pipe_through Plugs.AuthAccessPipeline
-    pipe_through :check_admin
+    pipe_through [:browser, Plugs.AuthAccessPipeline, :check_admin]
 
     get "/", AdminController, :index
     resources "/articles", ArticleController, only: [:index, :new, :create, :edit, :update, :delete]
   end
 
   scope "/auth", WritingWeb do
-    pipe_through :browser
+    pipe_through [:browser]
 
     get "/:provider", AuthController, :request
     get "/:provider/callback", AuthController, :callback
@@ -37,8 +35,7 @@ defmodule WritingWeb.Router do
   end
 
   scope "/", WritingWeb do
-    pipe_through :browser
-    pipe_through :check_admin
+    pipe_through [:browser, :check_admin]
 
     get "/", PageController, :index
     get "/login", AdminController, :login

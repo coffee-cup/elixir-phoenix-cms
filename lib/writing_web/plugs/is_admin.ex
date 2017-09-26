@@ -1,4 +1,4 @@
-defmodule Writing.Plugs.IsAdmin do
+defmodule WritingWeb.Plugs.IsAdmin do
   use Guardian.Plug.Pipeline, otp_app: :writing
 
   import Plug.Conn
