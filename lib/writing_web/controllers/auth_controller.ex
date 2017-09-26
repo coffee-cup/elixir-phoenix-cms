@@ -41,7 +41,7 @@ defmodule WritingWeb.AuthController do
     case Accounts.create_user(user) do
       {:ok, user} ->
         auth_user(conn, user)
-      {:error, reason} ->
+      {:error, _} ->
         conn
         |> put_flash(:error, "Error creating user")
         |> redirect(to: admin_path(conn, :login))

@@ -7,7 +7,8 @@ defmodule Writing.AccountsTest do
     alias Writing.Accounts.Article
 
     @valid_attrs %{text: "some body", draft: true, image: "some image", title: "some title", slug: "some-title"}
-    @update_attrs %{text: "some updated body", draft: false, image: "some updated image", title: "some updated title", slug: "some-updated-title"}
+    @valid_attrs_draft %{text: "some draft body", draft: true, image: "some image", title: "some title draft", slug: "some-title-draft"}
+    @update_attrs %{text: "some updated body", draft: true, image: "some updated image", title: "some updated title", slug: "some-updated-title"}
     @invalid_attrs %{text: nil, draft: nil, image: nil, title: nil}
 
     def article_fixture(attrs \\ %{}) do
@@ -24,6 +25,13 @@ defmodule Writing.AccountsTest do
       assert Accounts.list_articles() == [article]
     end
 
+    test "list_articles_draft/1 returns filtered articles" do
+      draft = article_fixture(@valid_attrs_draft)
+      published = article_fixture(Map.put(@valid_attrs, :draft, false))
+      assert Accounts.list_articles_draft(false) == [published]
+      assert Accounts.list_articles_draft(true) == [draft]
+    end
+
     test "get_article!/1 returns the article with given id" do
       article = article_fixture()
       assert Accounts.get_article!(article.id) == article
@@ -33,6 +41,12 @@ defmodule Writing.AccountsTest do
       assert {:ok, %Article{} = article} = Accounts.create_article(@valid_attrs)
       assert article.text == "some body"
       assert article.title == "some title"
+    end
+
+    test "creating an article converts text to html" do
+      assert {:ok, %Article{} = article} = Accounts.create_article(Map.put(@valid_attrs, :text, "# Hello"))
+      assert article.text == "# Hello"
+      assert article.html == "<h1>Hello</h1>\n"
     end
 
     test "create_article/1 with invalid data returns error changeset" do

@@ -1,8 +1,8 @@
 defmodule WritingWeb.PageControllerTest do
-  use WritingWeb.ConnCase
+  use WritingWeb.ConnCase, async: true
 
   test "GET /", %{conn: conn} do
     conn = get conn, "/"
-    assert html_response(conn, 200) != ""
+    assert html_response(conn, 200) != "w."
   end
 end

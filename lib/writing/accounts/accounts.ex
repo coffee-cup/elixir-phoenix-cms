@@ -18,7 +18,8 @@ defmodule Writing.Accounts do
 
   """
   def list_articles() do
-    Repo.all(Article)
+    from(a in Article, order_by: [desc: :published_at, desc: :inserted_at])
+    |> Repo.all()
   end
 
   @doc """
