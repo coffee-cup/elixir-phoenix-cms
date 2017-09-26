@@ -14,8 +14,6 @@ defmodule Writing.Guardian do
   def subject_for_token(_, _), do: {:error, :reason_for_error}
 
   def resource_from_claims(claims) do
-    IO.inspect claims
-
     case Accounts.get_user(claims["sub"]) do
       %User{} = user -> {:ok, user}
       _ -> {:error, "Resource not found"}

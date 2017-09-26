@@ -1,14 +1,14 @@
 defmodule Writing.AccountsTest do
-  use Writing.DataCase
+  use Writing.DataCase, async: true
 
   alias Writing.Accounts
 
   describe "articles" do
     alias Writing.Accounts.Article
 
-    @valid_attrs %{body: "some body", title: "some title", image: "http://example.com/image.jpg"}
-    @update_attrs %{body: "some updated body", title: "some updated title", image: "http://example.com/image-updated.jpg"}
-    @invalid_attrs %{body: nil, title: nil}
+    @valid_attrs %{text: "some body", draft: true, image: "some image", title: "some title", slug: "some-title"}
+    @update_attrs %{text: "some updated body", draft: false, image: "some updated image", title: "some updated title", slug: "some-updated-title"}
+    @invalid_attrs %{text: nil, draft: nil, image: nil, title: nil}
 
     def article_fixture(attrs \\ %{}) do
       {:ok, article} =
@@ -31,7 +31,7 @@ defmodule Writing.AccountsTest do
 
     test "create_article/1 with valid data creates a article" do
       assert {:ok, %Article{} = article} = Accounts.create_article(@valid_attrs)
-      assert article.body == "some body"
+      assert article.text == "some body"
       assert article.title == "some title"
     end
 
@@ -43,7 +43,7 @@ defmodule Writing.AccountsTest do
       article = article_fixture()
       assert {:ok, article} = Accounts.update_article(article, @update_attrs)
       assert %Article{} = article
-      assert article.body == "some updated body"
+      assert article.text == "some updated body"
       assert article.title == "some updated title"
     end
 

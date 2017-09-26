@@ -42,7 +42,6 @@ defmodule WritingWeb.AuthController do
       {:ok, user} ->
         auth_user(conn, user)
       {:error, reason} ->
-        IO.inspect reason
         conn
         |> put_flash(:error, "Error creating user")
         |> redirect(to: admin_path(conn, :login))
@@ -50,7 +49,6 @@ defmodule WritingWeb.AuthController do
   end
 
   def sign_in_user(conn, %{"user" => user}) do
-    IO.inspect user
     case Accounts.get_user_by_email(user.email) do
       %User{} = user ->
         auth_user(conn, user)

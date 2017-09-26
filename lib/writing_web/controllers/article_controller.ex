@@ -20,7 +20,6 @@ defmodule WritingWeb.ArticleController do
     case Accounts.create_article(article_params) do
       {:ok, article} ->
         conn
-        |> put_flash(:info, "Article created successfully.")
         |> redirect(to: article_path(conn, :show, article.slug))
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "new.html", changeset: changeset)
@@ -28,7 +27,7 @@ defmodule WritingWeb.ArticleController do
   end
 
   def show(conn, %{"slug" => slug}) do
-     case Accounts.get_article_by_slug(slug) do
+    case Accounts.get_article_by_slug(slug) do
       %Article{} = article ->
         render(conn, "show.html",
           article: article,
@@ -52,7 +51,6 @@ defmodule WritingWeb.ArticleController do
     case Accounts.update_article(article, article_params) do
       {:ok, article} ->
         conn
-        |> put_flash(:info, "Article updated successfully.")
         |> redirect(to: article_path(conn, :show, article.slug))
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "edit.html", article: article, changeset: changeset)
@@ -64,7 +62,6 @@ defmodule WritingWeb.ArticleController do
     {:ok, _article} = Accounts.delete_article(article)
 
     conn
-    |> put_flash(:info, "Article deleted successfully.")
     |> redirect(to: article_path(conn, :index))
   end
 end

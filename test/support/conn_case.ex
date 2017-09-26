@@ -23,6 +23,25 @@ defmodule WritingWeb.ConnCase do
 
       # The default endpoint for testing
       @endpoint WritingWeb.Endpoint
+
+      # Sign in the user and place the `jwt` token in header
+      def guardian_login(%Writing.Accounts.User{} = user), do: guardian_login(conn(), user, :token, [])
+      def guardian_login(%Writing.Accounts.User{} = user, token), do: guardian_login(conn(), user, token, [])
+      def guardian_login(%Writing.Accounts.User{} = user, token, opts), do: guardian_login(conn(), user, token, opts)
+
+      def guardian_login(%Plug.Conn{} = conn, user), do: guardian_login(conn, user, :token, [])
+      def guardian_login(%Plug.Conn{} = conn, user, token), do: guardian_login(conn, user, token, [])
+      def guardian_login(%Plug.Conn{} = conn, user, token, opts) do
+        conn = conn
+        |> Writing.Guardian.Plug.sign_in(user)
+        jwt = Writing.Guardian.Plug.current_token(conn)
+
+        conn
+        |> assign(:user, user)
+        |> assign(:user_id, user.id)
+        |> put_req_header("authorization", "Bearer #{jwt}")
+        |> Writing.Guardian.Plug.put_current_resource(user)
+      end
     end
   end
 
