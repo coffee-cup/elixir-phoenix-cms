@@ -15,8 +15,7 @@ use Mix.Config
 # which you typically run after static files are built.
 config :writing, WritingWeb.Endpoint,
   http: [port: {:system, "PORT"}],
-  url: [scheme: "https", host: System.get_env("DOMAIN"), port: 443],
-  force_ssl: [rewrite_on: [:x_forwarded_proto]],
+  url: [host: System.get_env("DOMAIN"), port: 80],
   cache_static_manifest: "priv/static/cache_manifest.json",
   secret_key_base: System.get_env("SECRET_KEY_BASE")
 
