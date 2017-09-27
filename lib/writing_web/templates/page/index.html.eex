@@ -1,7 +1,7 @@
 <%= render WritingWeb.SharedView, "large_header.html", assigns %>
 
 <div class="home__articles">
-  <h1 class="f2 mb0">Articles</h1>
+  <%# <h1 class="f2 mb0">Articles</h1> %>
 
   <%= render WritingWeb.SharedView, "articles.html", assigns %>
 </div>
