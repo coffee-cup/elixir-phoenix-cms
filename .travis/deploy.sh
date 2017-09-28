@@ -11,7 +11,7 @@ if [[ $TRAVIS_BRANCH == "master" && $TRAVIS_PULL_REQUEST == "false" ]]; then
   eval "$(ssh-agent -s)"
   chmod 600 .travis/travis_dokku
   ssh-add .travis/travis_dokku
-  ssh-keyscan 159.203.47.250 >> ~/.ssh/known_hosts
+  ssh-keyscan jakerunzer.space >> ~/.ssh/known_hosts
   git remote add dokku dokku@jakerunzer.space:writing
   git config --global push.default simple
   git push dokku master
