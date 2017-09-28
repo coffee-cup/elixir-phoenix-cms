@@ -59,11 +59,19 @@
     <% end %>
 
     </div> <!-- /container -->
-    <script src="<%= static_path(@conn, "/app.js") %>"></script>
 
-    <%# hightlight.js %>
+    <script src="<%= static_path(@conn, "/app.js") %>"></script>
     <script src="<%= static_path(@conn, "/highlight.pack.js") %>"></script>
-    <link rel="stylesheet" href="<%= static_path(@conn, "/atelier-cave-light.css") %>">
     <script>hljs.initHighlightingOnLoad();</script>
+
+    <!-- Global Site Tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-107274148-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments)};
+      gtag('js', new Date());
+
+      gtag('config', 'UA-107274148-1');
+    </script>
   </body>
 </html>
