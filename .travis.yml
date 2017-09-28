@@ -8,6 +8,6 @@ before_install:
   -in ./.travis/travis_dokku.enc -out ./.travis/travis_dokku -d
 deploy:
   provider: script
-  script: scripts/deploy.sh
+  script: .travis/deploy.sh
   on:
     branch: master
