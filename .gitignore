@@ -163,3 +163,7 @@ erl_crash.dump
 /web/static/vendor/main.js
 
 .env.*
+
+# Credentials
+.travis/*travis_dokku
+.travis/*travis_dokku.pub
