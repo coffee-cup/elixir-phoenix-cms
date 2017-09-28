@@ -8,6 +8,7 @@ before_install:
   -in .travis/travis_dokku.enc -out .travis/travis_dokku -d
 deploy:
   provider: script
+  skip_cleanup: true
   script: .travis/deploy.sh
   on:
     branch: master
