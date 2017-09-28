@@ -6,6 +6,7 @@ if [[ $TRAVIS_BRANCH == "master" && $TRAVIS_PULL_REQUEST == "false" ]]; then
   echo "Starting deploying 🚀"
 
   ls
+  ls .travis
 
   eval "$(ssh-agent -s)"
   chmod 600 .travis/travis_dokku
