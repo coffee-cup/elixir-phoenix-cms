@@ -23,6 +23,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="<%= Map.get(assigns, :title, title()) %>">
     <meta name="twitter:description" content="<%= Map.get(assigns, :description, description()) %>">
+    <meta name="twitter:site" content="@jakerunzer">
     <meta name="twitter:creator" content="@jakerunzer">
     <%= if Map.has_key?(assigns, :image) do %>
       <meta name="twitter:image" content="<%= Map.get(assigns, :image) %>">
@@ -44,6 +45,17 @@
     <link rel="stylesheet" href="<%= static_path(@conn, "/app.css") %>">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merriweather:400,400i,700">
 
+    <!-- Global Site Tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-107274148-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments)};
+      gtag('js', new Date());
+
+      gtag('config', 'UA-107274148-1');
+      gtag('event', 'page_view', { 'send_to': 'UA-107274148-1' });
+    </script>
+
   </head>
 
   <body>
@@ -63,15 +75,5 @@
     <script src="<%= static_path(@conn, "/app.js") %>"></script>
     <script src="<%= static_path(@conn, "/highlight.pack.js") %>"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-
-    <!-- Global Site Tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-107274148-1"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments)};
-      gtag('js', new Date());
-
-      gtag('config', 'UA-107274148-1');
-    </script>
   </body>
 </html>
