@@ -8,7 +8,7 @@
 
 <div class="article">
   <div class="article__header pv5">
-    <h2 class="f-subheadline-ns f1 mv0"><%= @article.title %></h2>
+    <h1 class="f-subheadline-ns f1 mv0"><%= @article.title %></h1>
     <div class="f5 pt3 text-lightgray sans">
       <%= Writing.Accounts.Article.format_date(@article) %>
     </div>
