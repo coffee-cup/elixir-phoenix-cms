@@ -28,7 +28,7 @@ defmodule Writing.Accounts.Article do
   end
   def format_date(date) do
     date
-    |> Timex.format!( "%B %e, %Y", :strftime)
+    |> Timex.format!( "%B %e. %Y", :strftime)
   end
 
   @doc false
