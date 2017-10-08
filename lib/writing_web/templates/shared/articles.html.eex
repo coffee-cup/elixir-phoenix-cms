@@ -1,7 +1,11 @@
 <div class="articles">
   <ul class="articles__list none">
     <%= for article <- @articles do %>
+
+      <%# Article Item %>
       <li class="article__item flex ac">
+
+        <%# Title and date %>
         <a href="<%= article_path(@conn, :show, article.slug) %>" class="none">
           <div class="flex col">
             <p class="f3 mt3 nb1"><%= article.title %></p>
@@ -11,12 +15,15 @@
           </div>
         </a>
 
+        <%# Buttons for admins %>
         <%= if @is_admin and Map.get(assigns, :show_edit, false) do %>
           <span class="f5 ml4">
             <%= link "edit", to: article_path(@conn, :edit, article) %>
           </span>
+          <%= link "delete", to: article_path(@conn, :delete, article), method: :delete, class: "f5 ml4" %>
         <% end %>
       </li>
+
     <% end %>
   </ul>
 </div>

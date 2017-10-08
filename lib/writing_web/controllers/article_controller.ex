@@ -33,7 +33,9 @@ defmodule WritingWeb.ArticleController do
           article: article,
           title: Map.get(article, :title),
           image: Map.get(article, :image),
-          description: String.slice(Map.get(article, :text), 0, 150) <> "...")
+          description: String.slice(Map.get(article, :text), 0, 150) <> "...",
+          tex: true
+        )
       _ ->
         render(conn, ErrorView, "404.html")
     end
