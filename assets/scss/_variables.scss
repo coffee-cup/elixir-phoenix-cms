@@ -4,14 +4,21 @@ $darkgray: #333333;
 $white: #ffffff;
 $darkblue: #3b28cc;
 $lightblue: #3fafff;
-$red: #e7040f;
+$red: #c5140b;
 $beige: #fdf6e3;
-$purple: #5e2bff;
+$purple: #473bf0;
 $green: #19d626;
+// Cooolers
+$color1: rgba(206, 45, 79, 1);
+$color2: rgba(247, 236, 22, 1);
+$color3: rgba(113, 90, 255, 1);
+$color4: rgba(71, 59, 240, 1);
+$color5: rgba(30, 26, 27, 1);
 // Colour usage
-$primary-colour: $darkblue;
+$primary-colour: $purple;
 $secondary-colour: $green;
-$accent-colour: $red;
+$accent-colour: $color1;
+$near-black: #000500;
 $background-colour: white;
 $quote-border: #dfe2e5;
 $quote-colour: #9c9c9c;
