@@ -1,29 +1,30 @@
 .button {
   display: inline-block;
-  padding: .5rem;
+  padding: 0.5rem;
   color: $text-light;
   background-color: $primary-colour;
   text-shadow: none;
-  font-size: .9rem;
+  font-size: 0.9rem;
   font-weight: bold;
   border: none;
   border-radius: $bradius;
   outline: none;
   cursor: pointer;
-  transition: transform .250s ease-out;
+  transition: transform 0.25s ease-out;
   &:hover {
-    transform: scale(1.02);
+    color: $text-light;
+    background: $accent-colour;
+    text-shadow: none;
     opacity: 1;
   }
   &:active {
-    transform: scale(1.01);
   }
-  &--noRadius {
+  &--noradius {
     border-radius: 0;
   }
   &--large {
     width: 100%;
-    padding: .7rem 1rem;
+    padding: 0.7rem 1rem;
     text-align: center;
   }
 }

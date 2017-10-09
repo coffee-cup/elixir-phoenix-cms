@@ -15,5 +15,5 @@
     </div>
   <% end %>
 
-  <span><%= link "New", to: article_path(@conn, :new), class: "button button" %></span>
+  <span><%= link "New", to: article_path(@conn, :new), class: "button" %></span>
 </div>
