@@ -1,7 +1,9 @@
 <%= render WritingWeb.SharedView, "large_header.html", assigns %>
 
 <div class="home__articles">
-  <%# <h1 class="f2 mb0">Articles</h1> %>
+  <%= if assigns[:tag] do %>
+    <h1 class="f2 mb0 ttc"><%= assigns.tag %></h1>
+  <% end %>
 
   <%= render WritingWeb.SharedView, "articles.html", assigns %>
 </div>

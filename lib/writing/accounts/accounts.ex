@@ -17,18 +17,23 @@ defmodule Writing.Accounts do
       [%Article{}, ...]
 
   """
-  def list_articles() do
-    from(a in Article, order_by: [desc: :published_at, desc: :inserted_at])
+  def list_articles(opts \\ []) do
+    opts = Keyword.merge([
+      draft: false
+    ], opts)
+    from(a in Article,
+      where: a.draft == ^opts[:draft],
+      order_by: [desc: :published_at, desc: :inserted_at])
     |> Repo.all()
   end
 
-  @doc """
-  Returns list of articles where draft == `draft`.
-  """
-  def list_articles_draft(draft \\ false) do
+  def list_articles_tag(tag, draft \\ false) do
+    tags = String.split(tag, "+")
+    IO.inspect(tags)
     from(a in Article,
-      where: a.draft == ^draft,
-      order_by: [desc: :published_at, desc: :inserted_at])
+      preload: [:tags],
+      join: t in assoc(a, :tags),
+      where: a.draft == ^draft and t.label in ^tags)
     |> Repo.all()
   end
 

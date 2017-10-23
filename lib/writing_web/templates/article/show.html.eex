@@ -9,7 +9,7 @@
 <div class="article">
   <div class="article__header pt5 pb3">
     <h1 class="f-subheadline-ns f1 mv0"><%= @article.title %></h1>
-    <div class="f5 pt1 flex sb text-lightgray sans">
+    <div class="pt1 flex sb text-lightgray sans">
       <%= render WritingWeb.SharedView, "tags.html", Map.put(assigns, :tags, @article.tags) %>
       <p><%= Writing.Accounts.Article.format_date(@article) %></p>
     </div>

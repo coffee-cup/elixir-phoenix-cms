@@ -6,8 +6,8 @@ defmodule WritingWeb.ArticleController do
   alias WritingWeb.ErrorView
 
   def index(conn, _params) do
-    published = Accounts.list_articles_draft(false)
-    drafts = Accounts.list_articles_draft(true)
+    published = Accounts.list_articles(draft: false)
+    drafts = Accounts.list_articles(draft: true)
     render(conn, "index.html", published: published, drafts: drafts, show_edit: true)
   end
 
