@@ -28,12 +28,15 @@ defmodule Writing.Accounts do
     |> Repo.all()
   end
 
-  def list_articles_tag(tag, draft \\ false) do
+  def list_articles_tag(tag, opts \\ []) do
+    opts = Keyword.merge([
+      draft: false
+    ], opts)
     tags = String.split(tag, "+")
     from(a in Article,
       preload: [:tags],
       join: t in assoc(a, :tags),
-      where: a.draft == ^draft and t.label in ^tags)
+      where: a.draft == ^opts[:draft] and t.label in ^tags)
     |> Repo.all()
   end
 

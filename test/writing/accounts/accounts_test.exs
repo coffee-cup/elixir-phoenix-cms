@@ -20,16 +20,40 @@ defmodule Writing.AccountsTest do
       article
     end
 
-    test "list_articles/0 returns all articles" do
-      article = article_fixture()
-      assert Accounts.list_articles() == [article]
+    def tag_labels(%Article{} = article) do
+      article.tags
+      |> Enum.map(fn t -> Map.get(t, :label) end)
     end
 
-    test "list_articles_draft/1 returns filtered articles" do
+    def scrub_time(%Article{} = article) do
+      article
+      |> Map.delete(:published_at)
+      |> Map.delete(:inserted_at)
+      |> Map.delete(:updated_at)
+    end
+
+    def articles_equal(articles1, articles2) when is_list(articles1) and is_list(articles2) do
+      assert Enum.map(articles1, &scrub_time/1) == Enum.map(articles2, &scrub_time/1)
+    end
+    def articles_equal(%Article{} = article, articles2), do: articles_equal([article], articles2)
+    def articles_equal(articles1, %Article{} = article), do: articles_equal(articles1, [article])
+
+    test "list_articles/0 returns all articles" do
+      article = article_fixture()
+      articles_equal(Accounts.list_articles(), article)
+    end
+
+    test "list_articles/1 returns filtered articles" do
       draft = article_fixture(@valid_attrs_draft)
       published = article_fixture(Map.put(@valid_attrs, :draft, false))
-      assert Accounts.list_articles(draft: false) == [published]
-      assert Accounts.list_articles(draft: true) == [draft]
+      articles_equal(Accounts.list_articles(draft: false), published)
+      articles_equal(Accounts.list_articles(draft: true), draft)
+    end
+
+    test "list_articles_tag/2 returns filtered articles" do
+      article = article_fixture(%{tags: "these, are,the,    tags"})
+      articles_equal(Accounts.list_articles_tag("these", draft: false), article)
+      articles_equal(Accounts.list_articles_tag("nothing", draft: false), [])
     end
 
     test "get_article!/1 returns the article with given id" do
@@ -49,6 +73,14 @@ defmodule Writing.AccountsTest do
       assert article.html == "<h1>Hello</h1>\n"
     end
 
+    test "creating an article converts tags to models" do
+      article = article_fixture(%{tags: "these, are,the,    tags"})
+      articles_equal(Accounts.get_article!(article.id), article)
+      assert (length article.tags) == 4
+      labels = tag_labels(article)
+      assert labels == ["these", "are", "the", "tags"]
+    end
+
     test "create_article/1 with invalid data returns error changeset" do
       assert {:error, %Ecto.Changeset{}} = Accounts.create_article(@invalid_attrs)
     end
@@ -64,7 +96,7 @@ defmodule Writing.AccountsTest do
     test "update_article/2 with invalid data returns error changeset" do
       article = article_fixture()
       assert {:error, %Ecto.Changeset{}} = Accounts.update_article(article, @invalid_attrs)
-      assert article == Accounts.get_article!(article.id)
+      articles_equal([article], [Accounts.get_article!(article.id)])
     end
 
     test "delete_article/1 deletes the article" do

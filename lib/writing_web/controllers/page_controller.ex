@@ -12,6 +12,6 @@ defmodule WritingWeb.PageController do
     conn
     |> assign(:tag, tag)
     |> assign(:title, "w. | " <> String.capitalize(tag))
-    |> render("index.html", articles: Accounts.list_articles_tag(tag, false))
+    |> render("index.html", articles: Accounts.list_articles_tag(tag, draft: false))
   end
 end
