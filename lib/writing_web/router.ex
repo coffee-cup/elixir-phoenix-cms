@@ -40,6 +40,7 @@ defmodule WritingWeb.Router do
     get "/", PageController, :index
     get "/login", AdminController, :login
     get "/logout", AdminController, :logout
+    get "/tag/:tag", PageController, :tag
     get "/:slug", ArticleController, :show
   end
 

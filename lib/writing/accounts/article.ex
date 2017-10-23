@@ -3,6 +3,7 @@ defmodule Writing.Accounts.Article do
 
   import Ecto.Changeset
   alias Writing.Accounts.Article
+  alias Writing.Accounts
   alias Writing.Parser
 
   @timestamps_opts [type: Timex.Ecto.DateTime,
@@ -16,6 +17,7 @@ defmodule Writing.Accounts.Article do
     field :slug, :string
     field :title, :string
     field :published_at, Timex.Ecto.DateTime
+    many_to_many :tags, Writing.Accounts.Tag, join_through: "articles_tags"
 
     timestamps()
   end
@@ -28,7 +30,17 @@ defmodule Writing.Accounts.Article do
   end
   def format_date(date) do
     date
-    |> Timex.format!( "%B %e. %Y", :strftime)
+    |> Timex.format!("%B %e. %Y", :strftime)
+  end
+
+  def tag_string(%Article{} = article) do
+    case Map.get(article, :tags) do
+      %Ecto.Association.NotLoaded{} -> ""
+      tags ->
+        tags
+        |> Enum.map(fn t -> Map.get(t, :label) end)
+        |> Enum.join(", ")
+    end
   end
 
   @doc false
@@ -39,6 +51,23 @@ defmodule Writing.Accounts.Article do
     |> put_change(:html, Parser.to_html(get_text(attrs)))
     |> put_change(:published_at, get_published_date(article, attrs))
     |> unique_constraint(:slug)
+    |> put_assoc(:tags, parse_tags(article, attrs))
+  end
+
+  # Convert tag string `"this, is, a, tag"`
+  # into individual tag models in the db
+  def parse_tags(article, attrs) do
+    IO.puts "\n\nParsing tags"
+    IO.inspect attrs
+
+    new_tags = (attrs["tags"] || attrs[:tags] || "")
+    |> String.split(",")
+    |> Enum.map(&String.trim/1)
+    |> Enum.reject(& &1 == "")
+    |> IO.inspect
+    |> Accounts.insert_and_get_all_tags
+
+    IO.inspect (new_tags ++ Map.get(article, :tags))
   end
 
   # Get the Timex published date for the article.

@@ -51,6 +51,15 @@
         <%= text_input f, :image, placeholder: "Open graph image used for sharing. 1220x630" %>
       </div>
 
+      <%# Tags %>
+      <div class="form__article--image form-group">
+        <div class="form-label-group">
+          <%= label f, :tags %>
+          <%= error_tag f, :tags %>
+        </div>
+        <%= text_input f, :tags, value: Writing.Accounts.Article.tag_string(@changeset.data), placeholder: "Comma, separated, tags" %>
+      </div>
+
     </div>
 
     <div class="form-group">

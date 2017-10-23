@@ -27,8 +27,8 @@ defmodule Writing.Accounts do
   """
   def list_articles_draft(draft \\ false) do
     from(a in Article,
-        where: a.draft == ^draft,
-        order_by: [desc: :published_at, desc: :inserted_at])
+      where: a.draft == ^draft,
+      order_by: [desc: :published_at, desc: :inserted_at])
     |> Repo.all()
   end
 
@@ -46,9 +46,12 @@ defmodule Writing.Accounts do
       ** (Ecto.NoResultsError)
 
   """
-  def get_article!(id), do: Repo.get!(Article, id)
+  def get_article!(id), do: Repo.get!(Article, id) |> Repo.preload(:tags)
 
-  def get_article_by_slug(slug), do: Repo.get_by(Article, slug: slug)
+  def get_article_by_slug(slug) do
+    Repo.get_by(Article, slug: slug)
+    |> Repo.preload(:tags)
+  end
 
   @doc """
   Creates a article.
@@ -65,6 +68,7 @@ defmodule Writing.Accounts do
   def create_article(attrs \\ %{}) do
     %Article{}
     |> Article.changeset(attrs)
+    |> IO.inspect
     |> Repo.insert()
   end
 
@@ -228,5 +232,27 @@ defmodule Writing.Accounts do
 
   def admin_exists? do
     Repo.aggregate(User, :count, :id) >= 1
+  end
+
+  alias Writing.Accounts.Tag
+
+  def create_tag(label) do
+    %Tag{}
+    |> Tag.changeset(%{label: label})
+    |> Repo.insert()
+  end
+
+  def insert_and_get_all_tags([], _), do: []
+  def insert_and_get_all_tags(labels) do
+    labels
+    |> Enum.map(fn label ->
+        create_tag(label)
+    end)
+
+    Repo.all(from t in Tag, where: t.label in ^labels)
+  end
+
+  def get_tag(label) do
+    Repo.get_by(Tag, label: label)
   end
 end

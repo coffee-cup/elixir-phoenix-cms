@@ -29,6 +29,10 @@ a.light {
   }
 }
 
+a.lightgray {
+  color: $text-grey;
+}
+
 a.none {
   background: none;
   text-shadow: none;

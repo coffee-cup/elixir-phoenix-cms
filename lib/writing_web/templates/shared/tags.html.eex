@@ -1,0 +1,8 @@
+<div class="tags flex sb ac">
+  <%= for tag <- @tags do %>
+    <div class="tag pr1">
+      <a href="#" class="none lightgray"><%= tag.label %></a>
+      <span class="sep">,</span>
+    </div>
+  <% end %>
+</div>
