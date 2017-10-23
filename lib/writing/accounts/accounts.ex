@@ -30,7 +30,6 @@ defmodule Writing.Accounts do
 
   def list_articles_tag(tag, draft \\ false) do
     tags = String.split(tag, "+")
-    IO.inspect(tags)
     from(a in Article,
       preload: [:tags],
       join: t in assoc(a, :tags),
@@ -72,10 +71,8 @@ defmodule Writing.Accounts do
 
   """
   def create_article(attrs \\ %{}) do
-    IO.puts "\n\n\nCreating Article"
     %Article{}
     |> Article.changeset(attrs)
-    |> IO.inspect
     |> Repo.insert()
   end
 

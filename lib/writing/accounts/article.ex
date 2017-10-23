@@ -57,26 +57,18 @@ defmodule Writing.Accounts.Article do
   # Convert tag string `"this, is, a, tag"`
   # into individual tag models in the db
   def parse_tags(article, attrs) do
-    IO.puts "\n\nParsing tags"
-    IO.inspect attrs
-
     new_tags = (attrs["tags"] || attrs[:tags] || "")
     |> String.split(",")
     |> Enum.map(&String.trim/1)
     |> Enum.reject(& &1 == "")
-    |> IO.inspect
     |> Accounts.insert_and_get_all_tags
-
-    IO.puts "\n\nCurrent tags are ----"
-    IO.inspect Map.get(article, :tags)
 
     current_tags = case Map.get(article, :tags) do
       %Ecto.Association.NotLoaded{} -> []
       tags -> tags
     end
 
-    IO.puts "\n\nTags AARE- --------"
-    IO.inspect (new_tags ++ current_tags)
+    new_tags ++ current_tags
   end
 
   # Get the Timex published date for the article.
