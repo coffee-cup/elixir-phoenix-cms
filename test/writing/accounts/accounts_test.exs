@@ -58,7 +58,7 @@ defmodule Writing.AccountsTest do
 
     test "get_article!/1 returns the article with given id" do
       article = article_fixture()
-      assert Accounts.get_article!(article.id) == article
+      articles_equal(Accounts.get_article!(article.id), article)
     end
 
     test "create_article/1 with valid data creates a article" do
