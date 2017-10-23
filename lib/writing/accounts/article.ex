@@ -33,14 +33,14 @@ defmodule Writing.Accounts.Article do
     |> Timex.format!("%B %e. %Y", :strftime)
   end
 
-  def tag_string(%Article{} = article) do
+  def tag_string(%Article{} = article, join_char \\ ".") do
     case Map.get(article, :tags) do
       %Ecto.Association.NotLoaded{} -> ""
       tags ->
         tags
         |> Enum.map(fn t -> Map.get(t, :label) end)
-        |> Enum.join(". ")
-    end
+        |> Enum.join(join_char <> " ")
+      end
   end
 
   @doc false

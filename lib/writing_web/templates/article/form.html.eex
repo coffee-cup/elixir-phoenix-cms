@@ -57,7 +57,7 @@
           <%= label f, :tags %>
           <%= error_tag f, :tags %>
         </div>
-        <%= text_input f, :tags, value: Writing.Accounts.Article.tag_string(@changeset.data), placeholder: "Comma, separated, tags" %>
+        <%= text_input f, :tags, value: Writing.Accounts.Article.tag_string(@changeset.data, ","), placeholder: "Comma, separated, tags" %>
       </div>
 
     </div>
