@@ -43,7 +43,6 @@ defmodule WritingWeb.ArticleController do
 
   def edit(conn, %{"id" => id}) do
     article = Accounts.get_article!(id)
-    IO.inspect article
     changeset = Accounts.change_article(article)
     render(conn, "edit.html", article: article, changeset: changeset)
   end

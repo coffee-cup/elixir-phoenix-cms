@@ -6,7 +6,7 @@ defmodule Writing.AccountsTest do
   describe "articles" do
     alias Writing.Accounts.Article
 
-    @valid_attrs %{text: "some body", draft: true, image: "some image", title: "some title", slug: "some-title"}
+    @valid_attrs %{text: "some body", draft: false, image: "some image", title: "some title", slug: "some-title"}
     @valid_attrs_draft %{text: "some draft body", draft: true, image: "some image", title: "some title draft", slug: "some-title-draft"}
     @update_attrs %{text: "some updated body", draft: true, image: "some updated image", title: "some updated title", slug: "some-updated-title"}
     @invalid_attrs %{text: nil, draft: nil, image: nil, title: nil}
@@ -28,8 +28,8 @@ defmodule Writing.AccountsTest do
     test "list_articles_draft/1 returns filtered articles" do
       draft = article_fixture(@valid_attrs_draft)
       published = article_fixture(Map.put(@valid_attrs, :draft, false))
-      assert Accounts.list_articles_draft(false) == [published]
-      assert Accounts.list_articles_draft(true) == [draft]
+      assert Accounts.list_articles(draft: false) == [published]
+      assert Accounts.list_articles(draft: true) == [draft]
     end
 
     test "get_article!/1 returns the article with given id" do
