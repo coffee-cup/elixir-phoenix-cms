@@ -99,6 +99,15 @@ defmodule Writing.AccountsTest do
       articles_equal([article], [Accounts.get_article!(article.id)])
     end
 
+    test "update_article/2 with changed tags drops old tags" do
+      article = article_fixture(%{tags: "these, are,the,    tags"})
+      articles_equal(Accounts.get_article!(article.id), article)
+      assert tag_labels(article) == ["these", "are", "the", "tags"]
+
+      assert {:ok, article} = Accounts.update_article(article, %{tags: "new, tag"})
+      assert tag_labels(article) == ["new", "tag"]
+    end
+
     test "delete_article/1 deletes the article" do
       article = article_fixture()
       assert {:ok, %Article{}} = Accounts.delete_article(article)
