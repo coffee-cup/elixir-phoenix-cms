@@ -39,7 +39,7 @@ defmodule Writing.Accounts.Article do
       tags ->
         tags
         |> Enum.map(fn t -> Map.get(t, :label) end)
-        |> Enum.join(", ")
+        |> Enum.join(". ")
     end
   end
 

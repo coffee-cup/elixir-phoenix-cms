@@ -10,7 +10,7 @@
           <div class="flex col">
             <p class="f3 mt3 nb1"><%= article.title %></p>
             <span class="f6 mr4 text-lightgray sans">
-              <%= Writing.Accounts.Article.format_date(article) %>
+              <%= Writing.Accounts.Article.tag_string(article) %>
             </span>
           </div>
         </a>

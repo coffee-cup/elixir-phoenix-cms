@@ -23,6 +23,7 @@ defmodule Writing.Accounts do
     ], opts)
     from(a in Article,
       where: a.draft == ^opts[:draft],
+      preload: [:tags],
       order_by: [desc: :published_at, desc: :inserted_at])
     |> Repo.all()
   end

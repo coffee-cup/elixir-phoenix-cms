@@ -1,4 +1,6 @@
 <header class="header mt5 mb2">
-  <h1 class="f-headline-ns f-subheadline mv0">w.</h1>
+  <h1 class="f-headline-ns f-subheadline mv0">
+    <a href="/" class="none text-dark">w.</a>
+  </h1>
   <p class="f5">A collection of articles about things I find interesting.</p>
 </header>
