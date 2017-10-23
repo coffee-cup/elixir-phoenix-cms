@@ -17,7 +17,7 @@ defmodule Writing.Accounts.Article do
     field :slug, :string
     field :title, :string
     field :published_at, Timex.Ecto.DateTime
-    many_to_many :tags, Writing.Accounts.Tag, join_through: "articles_tags"
+    many_to_many :tags, Writing.Accounts.Tag, join_through: "articles_tags", on_replace: :delete
 
     timestamps()
   end
@@ -51,24 +51,17 @@ defmodule Writing.Accounts.Article do
     |> put_change(:html, Parser.to_html(get_text(attrs)))
     |> put_change(:published_at, get_published_date(article, attrs))
     |> unique_constraint(:slug)
-    |> put_assoc(:tags, parse_tags(article, attrs))
+    |> put_assoc(:tags, parse_tags(attrs))
   end
 
   # Convert tag string `"this, is, a, tag"`
   # into individual tag models in the db
-  def parse_tags(article, attrs) do
-    new_tags = (attrs["tags"] || attrs[:tags] || "")
+  def parse_tags(attrs) do
+    (attrs["tags"] || attrs[:tags] || "")
     |> String.split(",")
     |> Enum.map(&String.trim/1)
     |> Enum.reject(& &1 == "")
     |> Accounts.insert_and_get_all_tags
-
-    current_tags = case Map.get(article, :tags) do
-      %Ecto.Association.NotLoaded{} -> []
-      tags -> tags
-    end
-
-    new_tags ++ current_tags
   end
 
   # Get the Timex published date for the article.

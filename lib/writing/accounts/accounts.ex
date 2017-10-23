@@ -9,11 +9,17 @@ defmodule Writing.Accounts do
   alias Writing.Accounts.Article
 
   @doc """
-  Returns the list of articles.
+  Returns the list of articles that are draft true or false.
+
+  `opts` is a keyword list specifiying if articles should
+  be draft true or false. `opts[draft]` is false by default
 
   ## Examples
 
       iex> list_articles()
+      [%Article{}, ...]
+
+      iex> list_articles(draft: true)
       [%Article{}, ...]
 
   """
@@ -28,6 +34,18 @@ defmodule Writing.Accounts do
     |> Repo.all()
   end
 
+  @doc """
+  Returns articles with a given `tag`.
+  `tag` can be mutliple tags separated by "+" character.
+
+  `opts` is a keyword list specifiying if articles should
+  be draft true or false. `opts[draft]` is false by default
+
+  ## Examples
+
+      iex> list_articles_tag("hello+world", [draft: true])
+      [%Article{}, ...]
+  """
   def list_articles_tag(tag, opts \\ []) do
     opts = Keyword.merge([
       draft: false
