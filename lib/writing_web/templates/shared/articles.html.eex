@@ -9,7 +9,7 @@
         <a href="<%= article_path(@conn, :show, article.slug) %>" class="none">
           <div class="flex col">
             <p class="f3 mt3 nb1"><%= article.title %></p>
-            <span class="f6 mr4 text-lightgray sans">
+            <span class="mr4 text-lightgray sans">
               <%= Writing.Accounts.Article.tag_string(article) %>
             </span>
           </div>

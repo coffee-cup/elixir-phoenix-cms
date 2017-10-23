@@ -72,6 +72,7 @@ defmodule Writing.Accounts do
 
   """
   def create_article(attrs \\ %{}) do
+    IO.puts "\n\n\nCreating Article"
     %Article{}
     |> Article.changeset(attrs)
     |> IO.inspect

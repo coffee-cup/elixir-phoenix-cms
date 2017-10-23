@@ -67,7 +67,16 @@ defmodule Writing.Accounts.Article do
     |> IO.inspect
     |> Accounts.insert_and_get_all_tags
 
-    IO.inspect (new_tags ++ Map.get(article, :tags))
+    IO.puts "\n\nCurrent tags are ----"
+    IO.inspect Map.get(article, :tags)
+
+    current_tags = case Map.get(article, :tags) do
+      %Ecto.Association.NotLoaded{} -> []
+      tags -> tags
+    end
+
+    IO.puts "\n\nTags AARE- --------"
+    IO.inspect (new_tags ++ current_tags)
   end
 
   # Get the Timex published date for the article.
