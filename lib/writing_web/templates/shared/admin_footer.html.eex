@@ -1,4 +1,4 @@
-<footer class="footer bg-primary text-light bleed pv2">
+<footer class="footer bg-primary text-light bleed">
   <div class="container flex-ns sb">
     <p>You are <a href="<%= admin_path(@conn, :index) %>" class="light">Admin</a>
     <p><a href="<%= admin_path(@conn, :logout) %>" class="light">Logout</a>
