@@ -1,4 +1,3 @@
-/* TEAM */
 Your title: Jake Runzer
-Site: jakerunzer@gmail.com, https://jakerunzer.xyz
+Site: https://jakerunzer.com
 Twitter: jakerunzer
