@@ -1,16 +1,16 @@
 <div class="articles">
-  <ul class="articles__list none">
+  <div class="articles__list none">
     <%= for article <- @articles do %>
 
       <%# Article Item %>
-      <li class="article__item flex ac">
+      <div class="article__item mv0 flex ac">
 
         <%# Title and date %>
         <a href="<%= article_path(@conn, :show, article.slug) %>" class="none">
           <div class="flex col">
-            <p class="f3 mt3 nb1"><%= article.title %></p>
-            <span class="mr4 text-lightgray sans">
-              <%= Writing.Accounts.Article.tag_string(article) %>
+            <h3 class="f3 mb1"><%= article.title %></h3>
+            <span class="f5 text-lightgray sans">
+              <%= Writing.Accounts.Article.format_date(article) %>
             </span>
           </div>
         </a>
@@ -22,8 +22,8 @@
           </span>
           <%= link "delete", to: article_path(@conn, :delete, article), method: :delete, class: "f5 ml4" %>
         <% end %>
-      </li>
+      </div>
 
     <% end %>
-  </ul>
+  </div>
 </div>
