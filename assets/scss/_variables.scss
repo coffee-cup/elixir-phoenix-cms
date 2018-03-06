@@ -6,30 +6,35 @@ $darkblue: #3b28cc;
 $lightblue: #3fafff;
 $red: #e7040f;
 $beige: #fdf6e3;
-$purple: #473bf0;
+$purple: #4d3ae2;
+$lightpurple: #ABA7E8;
 $green: #19d626;
+
 // Cooolers
 $color1: rgba(206, 45, 79, 1);
 $color2: rgba(247, 236, 22, 1);
 $color3: rgba(113, 90, 255, 1);
 $color4: rgba(71, 59, 240, 1);
 $color5: rgba(30, 26, 27, 1);
+
 // Colour usage
 $primary-colour: $purple;
-$secondary-colour: $green;
-$accent-colour: $red;
+$secondary-colour: $red;
+$accent-colour: $lightpurple;
 $near-black: #000500;
 $background-colour: white;
 $quote-border: #dfe2e5;
 $quote-colour: #9c9c9c;
 $table-row-colour: rgba($primary-colour, 0.15);
+
 // Text
 $text-dark: $darkgray;
 $text-light: $white;
 $text-grey: #afafaf;
-$selection: #91ffee;
+$selection: $lightpurple;
 $success-colour: #83cc61;
 $error-colour: $red;
+
 // Misc
 $base-font-size: 18px;
 $base-line-height: 1.8;
@@ -37,6 +42,7 @@ $bradius: 0.2rem;
 $side-padding-small: 1.5rem;
 $s-animation: 0.25s ease-in-out;
 $gutter: 1rem;
+
 :root {
   --gutter: $gutter;
   --m-width: 44rem;
