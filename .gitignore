@@ -167,3 +167,4 @@ erl_crash.dump
 # Credentials
 .travis/*travis_dokku
 .travis/*travis_dokku.pub
+.python-version
