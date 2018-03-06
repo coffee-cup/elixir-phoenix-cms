@@ -54,7 +54,8 @@ defmodule Writing.Accounts do
     from(a in Article,
       preload: [:tags],
       join: t in assoc(a, :tags),
-      where: a.draft == ^opts[:draft] and t.label in ^tags)
+      where: a.draft == ^opts[:draft] and t.label in ^tags,
+      order_by: [desc: :published_at, desc: :inserted_at])
     |> Repo.all()
   end
 
